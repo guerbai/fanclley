@@ -2,3 +2,7 @@
 .idea/
 *.txt
 *.mobi
+test.py
+develop.py
+*.log
+migrations/

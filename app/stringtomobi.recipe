@@ -1,0 +1,36 @@
+from calibre.web.feeds.recipes import BasicNewsRecipe
+
+class Git_Pocket_Guide(BasicNewsRecipe):
+
+    title = 'wuxing'
+    description = ''
+    #cover_url = 'http://akamaicovers.oreilly.com/images/0636920024972/lrg.jpg'
+
+    #url_prefix = 'http://chimera.labs.oreilly.com/books/1230000000561/'
+    no_stylesheets = True
+    #keep_only_tags = [{ 'class': 'chapter' }]
+
+
+
+    def parse_index(self):
+        soup = self.index_to_soup('http://read.qidian.com/BookReader/82plFx6pHLY1.aspx')
+
+        div = soup.find('div', { 'class': 'list' })
+
+        articles = []
+        for link in div.findAll('a'):
+            if '#' in link['href']:
+                continue
+
+            if not 'ch' in link['href']:
+                continue
+
+            til = self.get_title(link)
+            url = link['href']
+            a = { 'title': til, 'url': url }
+
+            articles.append(a)
+
+        ans = [('hongxiu', articles)]
+
+        return ans
