@@ -4,3 +4,5 @@
 *.mobi
 test.py
 develop.py
+*.log
+migrations/
