@@ -22,6 +22,7 @@ class Book(db.Model):
     freechap_num = db.Column(db.Integer)
     vipchap_num = db.Column(db.Integer)
     cover_url = db.Column(db.Unicode)
+    raw_url = db.Column(db.String)
     origin_id = db.Column(db.SmallInteger, db.ForeignKey('origins.id'))
     chapters = db.relationship('Chapter',backref='Book')
 
