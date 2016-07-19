@@ -9,7 +9,7 @@ from . import db, login_manager
 class Permission:
     SEND_FREE = 0x01
     COMMENT = 0x02
-    SUBSCRIBE_NOVEL = 0x08
+    SUBSCRIBE_NOVEL = 0x04
     ADMINISTER = 0x80
 
 
@@ -50,11 +50,11 @@ class User(UserMixin, db.Model):
     role_id = db.Column(db.Integer, db.ForeignKey('roles.id'))
     password_hash = db.Column(db.String(128))
     confirmed = db.Column(db.Boolean, default=False)
-    kindle_loc = db.Column(db.String(64))
-    qidian_login = db.Column(db.String(64))
-    qidian_password = db.Column(db.String(64))
-    hongxiu_login = db.Column(db.String(64))
-    hongxiu_password = db.Column(db.String(64))
+    kindle_loc = db.Column(db.String)
+    qidian_login = db.Column(db.String)
+    qidian_password = db.Column(db.String)
+    hongxiu_login = db.Column(db.String)
+    hongxiu_password = db.Column(db.String)
 
 
 

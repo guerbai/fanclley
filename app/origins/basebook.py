@@ -15,6 +15,7 @@ class Basebook:
     freechap_num = 0
     vipchap_num = 0
     cover_url = ''
+    origin = u''
     origin_id = 0
     raw_url = ''
 

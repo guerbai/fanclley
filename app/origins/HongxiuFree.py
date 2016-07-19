@@ -10,11 +10,8 @@ class HongxiuFree(basebook):
     class_s = requests.session()
     origin_id = 2
 
-    def __init__(self,atuple):
-        self.bookname = atuple[0].encode('utf-8')
-        self.bookid = str(atuple[1])
-        self.bookstatus = atuple[2]
-        self.raw_url = atuple[3]
+    def __init__(self,bookid):
+        self.bookid = str(bookid)
         self.get_book_info()
         self.get_chapterlist()
 
@@ -22,6 +19,8 @@ class HongxiuFree(basebook):
         try:
             _bookinfo_api = 'http://novel.hongxiu.com/AndroidClient140401/book_cover_info/'+str(self.bookid)+'.json'
             res = json.loads(self.class_s.get(_bookinfo_api).content)
+            self.bookname = res['response']['title']
+            self.bookstatus = res['response']['bookstatus']
             self.authorname = res['response']['author'].encode('utf-8')
             self.authorid = res['response']['aid']
             orilogger.info(u'正在获取\"'+self.bookname+u'\"书籍信息')

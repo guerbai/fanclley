@@ -10,17 +10,22 @@ class QidianFree(basebook):
     #一本书是一个该类对象
     origin_id = 1
 
-    def __init__(self,atuple):
-        self.bookname = atuple[0].encode('utf-8')
-        self.bookid = str(atuple[1])
-        self.authorname = atuple[2].encode('utf-8')
-        self.authorid = str(atuple[3])
-        self.bookstatus = atuple[4]
-        self.raw_url = atuple[5]
+    def __init__(self,bookid):
+        self.bookid = bookid
+        self.get_book_info()
         self.get_chapterlist()
 
+    def get_book_info(self):
+        _book_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
+        try:
+            _infodict = json.loads(self.s.get(_book_api).content)
+            self.authorname = _infodict['Data']['Author']
+            self.bookstatus = _infodict['Data']['BookStatus']
+        except:
+            orilogger.exception(u'连接'+_book_api+u'出错！\n'+u'无法获取\"'+self.bookname+u'\"章节信息。')
+
     def get_chapterlist(self):
-        _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId=' + self.bookid
+        _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
         try:
             _chapdict = json.loads(self.s.get(_chaplist_api).content)
             buffer = _chapdict['Data']['Chapters']
@@ -57,6 +62,5 @@ class QidianFree(basebook):
         except:
             orilogger.exception(u'从起点中文网生成\"'+self.bookname+u'\.txt"失败')
 
-    def write_db(self):
-        pass
+
 

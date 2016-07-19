@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Fanclley - Search{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td class="col-md-3"> 来源 </td>
+                    <td class="col-md-6"> 书名 </td>
+                    <td class="col-md-3"> 发送 </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for abook in result %}
+                <tr>
+                    <td class="col-md-3"> {{ abook.origin }} </td>
+                    <td class="col-md-6"> <a href="{{ abook.raw_url }}"> {{ abook.bookname }} </a></td>
+                    <td class="col-md-3"> 发送 </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
