@@ -9,7 +9,7 @@ class my_logger:
         self.logger = logging.getLogger('app.'+logername)
         self.logger.setLevel(logging.DEBUG)
 
-        fh = logging.FileHandler('./app/data/log/' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) +logername+'.log')
+        fh = logging.FileHandler('./app/data/log/' + time.strftime("%Y-%m-%d", time.localtime()) +logername+'.log')
         fh.setLevel(logging.DEBUG)
 
         ch = logging.StreamHandler()
@@ -21,9 +21,9 @@ class my_logger:
         self.logger.addHandler(fh)
         self.logger.addHandler(ch)
 
-mainlogger = my_logger('main').logger
+#mainlogger = my_logger('main').logger
 orilogger = my_logger('origin').logger
-authlogger = my_logger('auth').logger
+#authlogger = my_logger('auth').logger
 '''
 #用来记录main blueprint的logger实例.
 mainlogger = logging.getLogger('app.main')

@@ -2,12 +2,11 @@
 from flask import render_template, redirect, url_for, abort, flash
 from flask.ext.login import login_required, current_user
 from . import main
-from .forms import EditProfileForm, EditProfileAdminForm
+from .forms import EditProfileForm
 from .. import db
-from ..models import Role, User
-from ..decorators import admin_required
 from forms import SearchForm
-from ..origins.search import Search
+from ..origins import Search,QidianFree,HongxiuFree
+from ..sendemail import sendto_kindle
 
 
 @main.route('/',methods=['GET', 'POST'])
@@ -26,6 +25,23 @@ def search_res(keyword=None):
         return render_template('search_res.html',result = res_list)
     else:
         return redirect(url_for('.index'))
+
+@main.route('/downloadfree/<origin>/<bookid>')
+def downloadfree(origin='',bookid=None):
+    if bookid != None:
+        if origin == u'起点':
+            QidianFree(bookid).generate_txt()
+        if origin == u'红袖':
+            HongxiuFree(bookid).generate_txt()
+    else:
+        flash(u'发送失败。')
+        return redirect(url_for('.index'))
+    if current_user.kindle_loc == None:
+        flash(u'请填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
+        return redirect(url_for('.index'))
+    sendto_kindle(current_user.kindle_loc,origin+str(bookid))
+    flash(u'发送成功，请注意查收！')
+    return redirect(url_for('.index'))
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required

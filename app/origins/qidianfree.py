@@ -1,17 +1,20 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import requests,json
-from ..logs import orilogger
-from . import basebook
+from ..loggers import orilogger
 
 #起点中文网，origin_id = 1
-class QidianFree(basebook):
+class QidianFree:
 
     #一本书是一个该类对象
     origin_id = 1
+    s = requests.session()
+    freechap_num = 0
+    vipchap_num = 0
+    _chap_list = []
 
     def __init__(self,bookid):
-        self.bookid = bookid
+        self.bookid = str(bookid)
         self.get_book_info()
         self.get_chapterlist()
 
@@ -19,6 +22,7 @@ class QidianFree(basebook):
         _book_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
         try:
             _infodict = json.loads(self.s.get(_book_api).content)
+            self.bookname = _infodict['Data']['BookName']
             self.authorname = _infodict['Data']['Author']
             self.bookstatus = _infodict['Data']['BookStatus']
         except:
@@ -43,7 +47,7 @@ class QidianFree(basebook):
     def get_singel_novel(self,chapterid):
         _novel_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetContent?BookId=' + self.bookid + '&ChapterId=' + chapterid
         try:
-            _novel = json.loads(self.class_s.get(_novel_api).content)['Data'].encode('utf-8')
+            _novel = json.loads(self.s.get(_novel_api).content)['Data'].encode('utf-8')
             return _novel
         except:
             orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
@@ -51,14 +55,13 @@ class QidianFree(basebook):
 
     def generate_txt(self):
         try:
-            file = open(r'app/data/txt/'+self.bookname + '.txt', 'w')
+            file = open(r'app/data/txt/'+u'起点'+self.bookid + '.txt', 'w')
             file.write(self.bookname+'\n'+u'作者： '+self.authorname+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname+str(self.freechap_num)+u'免费章节')
             for i in range(self.freechap_num):
                 file.write(self._chap_list[i][0]+'\n\n'+self.get_singel_novel(self._chap_list[i][1])+'\n\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
             file.close()
-            self.write_db()
         except:
             orilogger.exception(u'从起点中文网生成\"'+self.bookname+u'\.txt"失败')
 

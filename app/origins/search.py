@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 import requests,json
-from ..logs import orilogger
+from ..loggers import orilogger
 from .basebook import Basebook
 
 class Search:
@@ -27,7 +27,6 @@ class Search:
     def search_Qidian(self):
         _searchapi = 'http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=' + self.keyword
         try:
-
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['Data']:
                 abook = Basebook()
