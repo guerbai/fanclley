@@ -2,19 +2,22 @@
 # -*- coding:utf-8 -*-
 import requests,json
 from ..loggers import orilogger
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 #起点中文网，origin_id = 1
 class QidianFree:
 
     #一本书是一个该类对象
-    origin_id = 1
+    origin_id = '1'
     s = requests.session()
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
 
     def __init__(self,bookid):
-        self.bookid = str(bookid)
+        self.bookid = bookid
         self.get_book_info()
         self.get_chapterlist()
 
@@ -26,7 +29,7 @@ class QidianFree:
             self.authorname = _infodict['Data']['Author']
             self.bookstatus = _infodict['Data']['BookStatus']
         except:
-            orilogger.exception(u'连接'+_book_api+u'出错！\n'+u'无法获取\"'+self.bookname+u'\"章节信息。')
+            orilogger.exception(u'连接'+_book_api+u'出错！\n'+u'无法获取\"'+self.bookname+u'\"书籍信息。')
 
     def get_chapterlist(self):
         _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
@@ -38,7 +41,7 @@ class QidianFree:
             for i in range(1, self.chapter_num + 1):
                 if buffer[i]['vc'] >= '80000':
                     self.vipchap_num += 1
-                self._chap_list.append((buffer[i]['n'].encode('utf-8'), str(buffer[i]['c'])))
+                self._chap_list.append((buffer[i]['n'], str(buffer[i]['c'])))
             self.freechap_num = self.chapter_num - self.vipchap_num
         except:
             orilogger.exception(u'连接'+_chaplist_api+u'出错！\n'+u'无法获取\"'+self.bookname+u'\"章节信息。')
@@ -47,7 +50,7 @@ class QidianFree:
     def get_singel_novel(self,chapterid):
         _novel_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetContent?BookId=' + self.bookid + '&ChapterId=' + chapterid
         try:
-            _novel = json.loads(self.s.get(_novel_api).content)['Data'].encode('utf-8')
+            _novel = json.loads(self.s.get(_novel_api).content)['Data']
             return _novel
         except:
             orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
@@ -55,7 +58,7 @@ class QidianFree:
 
     def generate_txt(self):
         try:
-            file = open(r'app/data/txt/'+u'起点'+self.bookid + '.txt', 'w')
+            file = open(r'app/data/txt/'+u'起点'+'_'+self.bookid + '.txt', 'w')
             file.write(self.bookname+'\n'+u'作者： '+self.authorname+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname+str(self.freechap_num)+u'免费章节')
             for i in range(self.freechap_num):
