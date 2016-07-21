@@ -5,6 +5,9 @@ from flask import current_app, render_template
 from flask.ext.mail import Message
 from . import mail
 import time
+import sys
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
 
 def send_async_email(app, msg):

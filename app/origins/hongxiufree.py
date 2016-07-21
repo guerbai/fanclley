@@ -2,8 +2,12 @@
 # -*- coding:utf-8 -*-
 import requests,json
 from ..loggers  import orilogger
+import sys
+import re
+reload(sys)
+sys.setdefaultencoding("utf-8")
 
-#红袖添香站，origin_id = 2
+#红袖添香站，
 class HongxiuFree:
 
     s = requests.session()
@@ -24,12 +28,13 @@ class HongxiuFree:
 
     def get_book_info(self):
         try:
-            _bookinfo_api = 'http://novel.hongxiu.com/AndroidClient140401/book_cover_info/'+self.bookid+'.json'
-            res = json.loads(self.s.get(_bookinfo_api).content)
-            self.bookname = res['response']['title']
-            self.bookstatus = res['response']['bookstatus']
-            self.authorname = res['response']['author'].encode('utf-8')
-            self.authorid = res['response']['aid']
+            pattern = re.compile(r'title":"(.*?)","bookstatus":.*?author":"(.*?)"', re.S)
+            _bookinfo_api = 'http://novel.hongxiu.com/AndroidClient140401/book_cover_info/' + self.bookid + '.json'
+            res = self.s.get(_bookinfo_api).content
+            items = re.findall(pattern, res)
+            for item in items:
+                self.bookname = item[0]
+                self.authorname = item[1]
             orilogger.info(u'正在获取\"'+self.bookname+u'\"书籍信息')
         except:
             orilogger.exception(u'于红袖添香获取信息失败！')
@@ -50,7 +55,7 @@ class HongxiuFree:
         _novel_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_get/' + self.bookid + '_' + chapterid + '.json'
         try:
             _novel_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_get/'+self.bookid+'_'+chapterid+'.json'
-            _novel = json.loads(self.s.get(_novel_api).content)['response'][chapterid]['chapter_content'].encode('utf-8')
+            _novel = json.loads(self.s.get(_novel_api).content)['response'][chapterid]['chapter_content']
             return _novel
         except:
             orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
@@ -58,10 +63,10 @@ class HongxiuFree:
 
     def generate_txt(self):
         try:
-            file = open(r'app/data/txt/' + u'红袖'+self.bookid + '.txt', 'w')
+            file = open(r'app/data/txt/' + u'红袖'+'_'+self.bookid + '.txt', 'w')
             file.write(self.bookname+'\n'+u'作者： '+self.authorname+u'\n由fanclley推送。'+'\n\n')
             for i in range(self.freechap_num):
-                file.write(self._chap_list[i][0].encode('utf-8') + '\n\n' + self.get_singel_novel(
+                file.write(self._chap_list[i][0] + '\n\n' + self.get_singel_novel(
                     self._chap_list[i][1]) + '\n\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
             file.close()
