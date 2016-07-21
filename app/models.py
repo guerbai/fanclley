@@ -1,48 +1,100 @@
-# -*- coding:utf-8 -*-
-from . import db
+from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
+from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
+from flask import current_app
+from flask.ext.login import UserMixin, AnonymousUserMixin
+from . import db, login_manager
 
-class Origin(db.Model):
-    __tablename__ = 'origins'
-    id = db.Column(db.SmallInteger, primary_key=True)
-    name = db.Column(db.Unicode,unique=True)
-    books = db.relationship('Book',backref='origin')
 
-    def __repr__(self):
-        return '<Origin %r>' % self.name
 
-class Book(db.Model):
-    __tablename__ = 'books'
+class User(UserMixin, db.Model):
+    __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
-    bookname = db.Column(db.Unicode)
-    bookid = db.Column(db.BigInteger)
-    authorname = db.Column(db.Unicode)
-    authorid = db.Column(db.BigInteger)
-    status = db.Column(db.Unicode)
-    chapter_num = db.Column(db.Integer)
-    freechap_num = db.Column(db.Integer)
-    vipchap_num = db.Column(db.Integer)
-    cover_url = db.Column(db.Unicode)
-    origin_id = db.Column(db.SmallInteger, db.ForeignKey('origins.id'))
-    chapters = db.relationship('Chapter',backref='Book')
+    email = db.Column(db.String(64), unique=True, index=True)
+    username = db.Column(db.Unicode, unique=True, index=True)
 
-    def __init__(self,origin_id):
-        self.origin_id = origin_id
+    password_hash = db.Column(db.String(128))
+    confirmed = db.Column(db.Boolean, default=False)
+
+    kindle_loc = db.Column(db.String)
+    qidian_login = db.Column(db.String)
+    qidian_password = db.Column(db.String)
+    hongxiu_login = db.Column(db.String)
+    hongxiu_password = db.Column(db.String)
+
+
+
+    def __init__(self, **kwargs):
+        super(User, self).__init__(**kwargs)
+
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
+    def generate_confirmation_token(self, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'confirm': self.id})
+
+    def confirm(self, token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('confirm') != self.id:
+            return False
+        self.confirmed = True
+        db.session.add(self)
+        return True
+
+    def generate_reset_token(self, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'reset': self.id})
+
+    def reset_password(self, token, new_password):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('reset') != self.id:
+            return False
+        self.password = new_password
+        db.session.add(self)
+        return True
+
+    def generate_email_change_token(self, new_email, expiration=3600):
+        s = Serializer(current_app.config['SECRET_KEY'], expiration)
+        return s.dumps({'change_email': self.id, 'new_email': new_email})
+
+    def change_email(self, token):
+        s = Serializer(current_app.config['SECRET_KEY'])
+        try:
+            data = s.loads(token)
+        except:
+            return False
+        if data.get('change_email') != self.id:
+            return False
+        new_email = data.get('new_email')
+        if new_email is None:
+            return False
+        if self.query.filter_by(email=new_email).first() is not None:
+            return False
+        self.email = new_email
+        db.session.add(self)
+        return True
 
     def __repr__(self):
-        return '<Book %r>' % self.name
+        return '<User %r>' % self.username
 
-# only free chapters
-class Chapter(db.Model):
-    __tablename__ = 'chapters'
-    id = db.Column(db.BigInteger, primary_key=True)
-    chapterid = db.Column(db.BigInteger)
-    chaptername = db.Column(db.Unicode)
-    chapter_content = db.Column(db.UnicodeText)
-    book_id = db.Column(db.Integer, db.ForeignKey('books.id'))
 
-    def __init__(self,book_id):
-        self.book_id = book_id
-
-    def __repr__(self):
-        return '<Chapter %r>' % self.name
-
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))

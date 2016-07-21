@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block title %}Fanclley - Confirm your account{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>
+        你好, {{ current_user.username }}!
+    </h1>
+    <h3>请到注册邮箱确认.</h3>
+    <p>
+        注册完成之后即可使用此站点.
+        检查你的收件箱.一封包含确认链接的邮件已发送到你的邮箱！
+    </p>
+    <p>
+        再次发送确认邮件？
+        <a href="{{ url_for('auth.resend_confirmation') }}">点击这里</a>
+    </p>
+</div>
+{% endblock %}
