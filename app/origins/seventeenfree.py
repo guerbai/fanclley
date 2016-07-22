@@ -7,7 +7,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 #17k小说站。
-class seventeenfree:
+class Seventeenfree:
 
     s = requests.session()
     chapter_num = 0
@@ -66,7 +66,7 @@ class seventeenfree:
             file.write(self.bookname + '\n' + u'作者： ' + self.authorname + u'\n由fanclley推送。' + '\n\n')
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')
             for i in range(self.freechap_num):
-                file.write(self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
+                file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
 
         except:

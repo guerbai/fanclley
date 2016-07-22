@@ -1,8 +1,8 @@
 *.pyc
 .idea/
-*.txt
-*.mobi
 test.py
-develop.py
 *.log
 migrations/
+app/data/mobiworkshop/
+app/data/txt/
+*.sqlite

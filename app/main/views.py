@@ -5,7 +5,7 @@ from . import main
 from .forms import EditProfileForm
 from .. import db
 from forms import SearchForm
-from ..origins import Search,QidianFree,HongxiuFree,seventeenfree
+from ..origins import Search,QidianFree,HongxiuFree,Seventeenfree,Zonghengfree
 from ..sendemail import sendto_kindle
 
 
@@ -34,14 +34,16 @@ def downloadfree(origin='',bookid=None):
         if origin == u'红袖':
             HongxiuFree(bookid).generate_txt()
         if origin == u'17K':
-            seventeenfree(bookid).generate_txt()
+            Seventeenfree(bookid).generate_txt()
+        if origin == u'纵横':
+            Zonghengfree(bookid).generate_txt()
     else:
         flash(u'发送失败。')
         return redirect(url_for('.index'))
     if current_user.kindle_loc == None:
         flash(u'请填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
         return redirect(url_for('.index'))
-    sendto_kindle(current_user.kindle_loc,origin+'_'+str(bookid))
+    #sendto_kindle(current_user.kindle_loc,origin+'_'+str(bookid))
     flash(u'发送成功，请注意查收！')
     return redirect(url_for('.index'))
 
