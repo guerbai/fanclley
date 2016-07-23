@@ -38,10 +38,11 @@ class Search:
             for info in search_list['Data']:
                 if info['Type'] != 'book':
                     continue
-                abook = QidianFree()
+                abook = Basebook()
+                abook.origin = u'起点'
                 abook.bookname = info['BookName']
                 abook.bookid = str(info['BookId'])
-                abook.bookstatus = info['BookStatus']
+                #abook.bookstatus = info['BookStatus']
                 abook.authorname = info['AuthorName']
                 abook.raw_url = 'http://www.qidian.com/Book/'+str(info['BookId'])+'.aspx'
                 myres.append(abook)
@@ -62,10 +63,11 @@ class Search:
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['response']['data']:
-                abook = HongxiuFree()
+                abook = Basebook()
+                abook.origin = u'红袖'
                 abook.bookname = info['title']
                 abook.bookid = str(info['bid'])
-                abook.bookstatus = info['bookstatus']
+                #abook.bookstatus = info['bookstatus']
                 abook.raw_url = 'http://novel.hongxiu.com/a/'+str(info['bid'])+'/'
                 myres.append(abook)
             self.res_list+=myres
@@ -83,11 +85,12 @@ class Search:
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['viewList']:
-                abook = Seventeenfree()
+                abook = Basebook()
+                abook.origin = u'17K'
                 abook.bookname = info['bookName']
                 abook.bookid = str(info['bookId'])
                 abook.authorname = info['authorPenname']
-                abook.bookstatus = info['bookStatus']
+                #abook.bookstatus = info['bookStatus']
                 abook.raw_url = 'http://www.17k.com/list/'+abook.bookid+'.html'
                 myres.append(abook)
             self.res_list+=myres
@@ -108,7 +111,8 @@ class Search:
             if len(div) > 5:
                 div = div[:5]
             for i in div:
-                abook = Zonghengfree()
+                abook = Basebook()
+                abook.origin = u'纵横'
                 abook.bookname = i.find('h2').find('a').text
                 abook.raw_url = i.find('h2').find('a')['href']
                 abook.bookid = str(abook.raw_url.split('/')[-1].split('.')[0])

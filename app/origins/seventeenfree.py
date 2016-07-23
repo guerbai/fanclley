@@ -15,19 +15,22 @@ class Seventeenfree:
     vipchap_num = 0
     _chap_list = []
 
-    origin = '17K'
-    bookname = ''
-    bookid = ''
+    origin = u'17K'
     bookstatus = ''
-    raw_url = ''
 
-    def __init__(self):
-        pass
+    def __init__(self, bookid, bookname):
 
-    def get_chapterlist(self):
+        self.bookid = bookid
+        self.bookname = bookname
+        #self.raw_url = raw_url
+
+    def get_info(self):
         _chaplist_api = 'http://client1.17k.com/rest/download/getBookVolumeSimpleListBybid?bookId='+self.bookid\
                         +'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
+        _info_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
         try:
+            _infodict = json.loads(self.s.get(_info_api).content)
+            self.authorname = _infodict['book']['authorPenname']
             _chapdict = json.loads(self.s.get(_chaplist_api).content)
             for i in _chapdict['volumeList']:
                 if i['name'] == u'作品相关':

@@ -17,15 +17,15 @@ class Zonghengfree:
     _chap_list = []
 
     origin = u'纵横'
-    bookname = ''
-    bookid = ''
     bookstatus = ''
-    raw_url = ''
 
-    def __init__(self):
-        pass
+    def __init__(self, bookid, bookname):
 
-    def get_chapterlist(self):
+        self.bookid = bookid
+        self.bookname = bookname
+        #self.raw_url = raw_url
+
+    def get_info(self):
         url = 'http://book.zongheng.com/showchapter/'+self.bookid+'.html'
         try:
             res = self.s.get(url).text

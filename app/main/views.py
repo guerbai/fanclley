@@ -1,13 +1,12 @@
 # -*- coding:utf-8 -*-
-from flask import render_template, redirect, url_for, abort, flash
+from flask import render_template, redirect, url_for, abort, flash,jsonify
 from flask.ext.login import login_required, current_user
 from . import main
 from .forms import EditProfileForm
 from .. import db
 from forms import SearchForm
 from ..taskhandler import hardtask
-from ..origins import Search,QidianFree,HongxiuFree,Seventeenfree,Zonghengfree
-from ..sendemail import sendto_kindle
+from ..origins import Search
 
 
 @main.route('/',methods=['GET', 'POST'])
@@ -27,23 +26,15 @@ def search_res(keyword=None):
     else:
         return redirect(url_for('.index'))
 
-@main.route('/downloadfree/<abook>')
-def downloadfree(abook):
-    '''if abook == None:
-        if origin == u'起点':
-            QidianFree(bookid).generate_txt()
-        if origin == u'红袖':
-            HongxiuFree(bookid).generate_txt()
-        if origin == u'17K':
-            Seventeenfree(bookid).generate_txt()
-        if origin == u'纵横':
-            Zonghengfree(bookid).generate_txt()'''
+@main.route('/downloadfree/<origin>/<bookid>/<bookname>')
+def downloadfree(origin,bookid,bookname):
+
     if current_user.kindle_loc == None:
         flash(u'请先填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
     else:
-        #abook.get_chapterlist()
-        #abook.generate_txt()
-        hardtask.delay(current_user,abook)
+        #print abook
+        #print type(abook)
+        hardtask.delay(current_user.kindle_loc,origin,bookid,bookname)
         flash(u'你的推送已加入任务队列，请注意查收。')
     return redirect(url_for('.index'))
 
