@@ -15,29 +15,31 @@ class Zonghengfree:
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
+
+    origin = u'纵横'
     bookname = ''
     bookid = ''
     bookstatus = ''
-    authorname = ''
+    raw_url = ''
 
-
-    def __init__(self,bookid):
-        self.bookid = bookid
-        self.get_chapterlist()
+    def __init__(self):
+        pass
 
     def get_chapterlist(self):
         url = 'http://book.zongheng.com/showchapter/'+self.bookid+'.html'
         try:
             res = self.s.get(url).text
             soup = BeautifulSoup(res, 'lxml')
-            self.bookname = soup.find('div', class_='tc txt').find('h1').text
             self.authorname = soup.find('div', class_='tc txt').find('a').text
-            for i in soup.find_all('td', class_='chapterBean'):
+            buffer = soup.find_all('td', class_='chapterBean')
+            self.chapter_num = len(buffer)
+            for i in buffer:
                 if not i.find('em'):
                     self.freechap_num += 1
                 chaptername = i.find('a').text
                 chapterid = str(i.find('a')['href'].split('/')[-1].split('.')[0])
                 self._chap_list.append((chaptername, chapterid))
+            self.vipchap_num = self.chapter_num-self.freechap_num
             orilogger.info(u'已获取\"'+self.bookname+u'\"信息。')
         except:
             orilogger.exception(u'连接或解析' + url + u'出错！\n' + u'无法获取书籍章节信息。')

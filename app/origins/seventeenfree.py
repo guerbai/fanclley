@@ -14,24 +14,15 @@ class Seventeenfree:
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
+
+    origin = '17K'
     bookname = ''
     bookid = ''
     bookstatus = ''
-    authorname = ''
+    raw_url = ''
 
-    def __init__(self,bookid):
-        self.bookid = bookid
-        self.get_book_info()
-        self.get_chapterlist()
-
-    def get_book_info(self):
-        _bookinfo_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
-        try:
-            _infodict = json.loads(self.s.get(_bookinfo_api).content)
-            self.bookname = _infodict['book']['bookName']
-            self.authorname = _infodict['book']['authorPenname']
-        except:
-            orilogger.exception(u'连接' + _bookinfo_api + u'出错！\n' + u'无法获取\"' + self.bookname + u'\"书籍信息。')
+    def __init__(self):
+        pass
 
     def get_chapterlist(self):
         _chaplist_api = 'http://client1.17k.com/rest/download/getBookVolumeSimpleListBybid?bookId='+self.bookid\

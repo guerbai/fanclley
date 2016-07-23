@@ -4,6 +4,10 @@ import requests,json
 from ..loggers import orilogger
 from .basebook import Basebook
 from bs4 import BeautifulSoup
+from qidianfree import QidianFree
+from hongxiufree import HongxiuFree
+from seventeenfree import Seventeenfree
+from zonghengfree import Zonghengfree
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -34,11 +38,11 @@ class Search:
             for info in search_list['Data']:
                 if info['Type'] != 'book':
                     continue
-                abook = Basebook()
-                abook.origin = u'起点'
+                abook = QidianFree()
                 abook.bookname = info['BookName']
                 abook.bookid = str(info['BookId'])
                 abook.bookstatus = info['BookStatus']
+                abook.authorname = info['AuthorName']
                 abook.raw_url = 'http://www.qidian.com/Book/'+str(info['BookId'])+'.aspx'
                 myres.append(abook)
             if len(myres)>5:
@@ -58,8 +62,7 @@ class Search:
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['response']['data']:
-                abook = Basebook()
-                abook.origin = u'红袖'
+                abook = HongxiuFree()
                 abook.bookname = info['title']
                 abook.bookid = str(info['bid'])
                 abook.bookstatus = info['bookstatus']
@@ -80,10 +83,10 @@ class Search:
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['viewList']:
-                abook = Basebook()
-                abook.origin = u'17K'
+                abook = Seventeenfree()
                 abook.bookname = info['bookName']
                 abook.bookid = str(info['bookId'])
+                abook.authorname = info['authorPenname']
                 abook.bookstatus = info['bookStatus']
                 abook.raw_url = 'http://www.17k.com/list/'+abook.bookid+'.html'
                 myres.append(abook)
@@ -105,15 +108,14 @@ class Search:
             if len(div) > 5:
                 div = div[:5]
             for i in div:
-                abook = Basebook()
-                abook.origin = u'纵横'
+                abook = Zonghengfree()
                 abook.bookname = i.find('h2').find('a').text
                 abook.raw_url = i.find('h2').find('a')['href']
                 abook.bookid = str(abook.raw_url.split('/')[-1].split('.')[0])
                 myres.append(abook)
             self.res_list+=myres
             if myres == []:
-                orilogger.info(u'17K未找到包含关键字\"' + self.keyword + u'\"的小说')
+                orilogger.info(u'纵横中文网未找到包含关键字\"' + self.keyword + u'\"的小说')
             return myres
         except:
             orilogger.exception(u'无法连接' + url + u',\n无法获取纵横搜索结果。')

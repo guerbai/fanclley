@@ -6,30 +6,24 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-#起点中文网，origin_id = 1
+#起点中文网。
 class QidianFree:
 
     #一本书是一个该类对象
-    origin_id = '1'
     s = requests.session()
+    chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
 
-    def __init__(self,bookid):
-        self.bookid = bookid
-        self.get_book_info()
-        self.get_chapterlist()
+    origin = u'起点'
+    bookname = ''
+    bookid = ''
+    bookstatus = ''
+    raw_url = ''
 
-    def get_book_info(self):
-        _book_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
-        try:
-            _infodict = json.loads(self.s.get(_book_api).content)
-            self.bookname = _infodict['Data']['BookName']
-            self.authorname = _infodict['Data']['Author']
-            self.bookstatus = _infodict['Data']['BookStatus']
-        except:
-            orilogger.exception(u'连接'+_book_api+u'出错！\n'+u'无法获取\"'+self.bookname+u'\"书籍信息。')
+    def __init__(self):
+        pass
 
     def get_chapterlist(self):
         _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid

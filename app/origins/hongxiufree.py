@@ -7,24 +7,24 @@ import re
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-#红袖添香站，
+#红袖添香站。
 class HongxiuFree:
 
     s = requests.session()
-    origin_id = 2
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
-    bookname = ''
-    bookstatus = ''
-    authorname = ''
-    authorid = ''
 
-    def __init__(self,bookid):
-        self.bookid = str(bookid)
-        self.get_book_info()
-        self.get_chapterlist()
+    origin = u'红袖'
+    bookname = ''
+    bookid = ''
+    bookstatus = ''
+    raw_url = ''
+
+    def __init__(self):
+        pass
+
 
     def get_book_info(self):
         try:
@@ -33,7 +33,6 @@ class HongxiuFree:
             res = self.s.get(_bookinfo_api).content
             items = re.findall(pattern, res)
             for item in items:
-                self.bookname = item[0]
                 self.authorname = item[1]
             orilogger.info(u'正在获取\"'+self.bookname+u'\"书籍信息')
         except:

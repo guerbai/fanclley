@@ -18,22 +18,3 @@ class Basebook:
     origin = u''
     origin_id = 0
     raw_url = ''
-
-    def __init__(self):
-        pass
-
-    def get_book_info(self):
-        pass
-
-    def get_chapterlist(self):
-        pass
-
-    def get_chapter_content(self):
-        pass
-
-    def generate_txt(self):
-        pass
-
-    def write_db(self):
-        pass
-
