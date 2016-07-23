@@ -1,10 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
 
-</body>
-</html>
+{% block title %}Fanclley - chatroom{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h3>请留下你想要的功能以及建议吧!</h3>
+</div>
+
+{{ wtf.quick_form(form) }}
+
+<h3>留言历史信息</h3>
+
+{% include '_post.html' %}
+{% endblock %}

@@ -20,4 +20,8 @@ class EditProfileForm(Form):
     hongxiu_password = StringField(u'红袖添香登录密码：')#, validators=[Length(0, 64)])
     submit = SubmitField(u'保存')
 
+class MessageForm(Form):
+    message = TextAreaField(u'内容', validators=[Required()])
+    submit = SubmitField(u'留言')
+
 

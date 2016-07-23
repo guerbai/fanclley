@@ -26,14 +26,14 @@ def send_email(to, subject, template, **kwargs):
     return thr
 
 
-def sendto_kindle(to, bookname):
-    app = current_app._get_current_object()
+def sendto_kindle(to, bookname,app):
+    #app = current_app._get_current_object()
     msg = Message(app.config['FANCLLEY_MAIL_SUBJECT_PREFIX'] + ' ' + u'Your book coming!',
                   sender=app.config['FANCLLEY_MAIL_SENDER'], recipients=[to])
     msg.body = "fanclley"
     msg.html = "<b>Fanclley provide this service for you!</b>"
-    with app.open_resource(u"data/txt/" + bookname + '.txt') as fp:
-        msg.attach('fanclley' + time.strftime("%Y-%m-%d %H:%M:%S", time.localtime()) + '.txt', "*/*", fp.read())
+    with app.open_resource(u"data/mobiworkshop/" + bookname + '.mobi') as fp:
+        msg.attach('fanclley' + time.strftime("%Y-%m-%d", time.localtime()) + '.mobi', "*/*", fp.read())
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
     return thr

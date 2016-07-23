@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
 from flask import render_template, redirect, url_for, abort, flash,jsonify
-from flask.ext.login import login_required, current_user
+from flask.ext.login import login_required, current_user,AnonymousUserMixin
 from . import main
-from .forms import EditProfileForm
+from .forms import EditProfileForm,SearchForm,MessageForm
 from .. import db
-from forms import SearchForm
 from ..taskhandler import hardtask
 from ..origins import Search
+from ..models import Message
 
 
 @main.route('/',methods=['GET', 'POST'])
@@ -59,4 +59,22 @@ def edit_profile():
     form.hongxiu_login.data = current_user.hongxiu_login
     form.hongxiu_password.data = current_user.hongxiu_password
     return render_template('edit_profile.html', form=form)
+
+@main.route('/letschat',methods = ['GET','POST'])
+def letschat():
+    form = MessageForm()
+    messages = Message.query.order_by(Message.time.desc()).all()
+    if form.validate_on_submit():
+        if current_user.id == -1:
+            flash(u'请登录后留言。')
+            return redirect(url_for('.letschat'))
+        message = Message(user_name=current_user.username,user_id=current_user.id,\
+                          message = form.message.data)
+        db.session.add(message)
+        return redirect(url_for('.letschat'))
+    return render_template('letschat.html',messages = messages,form = form)
+
+@main.route('/usage')
+def usage():
+    return render_template('usage.html')
 
