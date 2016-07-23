@@ -17,16 +17,15 @@ class HongxiuFree:
     _chap_list = []
 
     origin = u'红袖'
-    bookname = ''
-    bookid = ''
     bookstatus = ''
-    raw_url = ''
 
-    def __init__(self):
-        pass
+    def __init__(self, bookid, bookname):
+        self.bookid = bookid
+        self.bookname = bookname
+        #self.raw_url = raw_url
 
 
-    def get_book_info(self):
+    def get_info(self):
         try:
             pattern = re.compile(r'title":"(.*?)","bookstatus":.*?author":"(.*?)"', re.S)
             _bookinfo_api = 'http://novel.hongxiu.com/AndroidClient140401/book_cover_info/' + self.bookid + '.json'
@@ -34,7 +33,8 @@ class HongxiuFree:
             items = re.findall(pattern, res)
             for item in items:
                 self.authorname = item[1]
-            orilogger.info(u'正在获取\"'+self.bookname+u'\"书籍信息')
+            self.get_chapterlist()
+            orilogger.info(u'已获取\"' + self.bookname + u'\"书籍信息')
         except:
             orilogger.exception(u'于红袖添香获取信息失败！')
 

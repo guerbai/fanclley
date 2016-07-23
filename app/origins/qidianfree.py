@@ -17,18 +17,20 @@ class QidianFree:
     _chap_list = []
 
     origin = u'起点'
-    bookname = ''
-    bookid = ''
     bookstatus = ''
-    raw_url = ''
 
-    def __init__(self):
-        pass
 
-    def get_chapterlist(self):
+    def __init__(self,bookid,bookname):
+
+        self.bookid = bookid
+        self.bookname = bookname
+        #self.raw_url = raw_url
+
+    def get_info(self):
         _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
         try:
             _chapdict = json.loads(self.s.get(_chaplist_api).content)
+            self.authorname = _chapdict['Data']['Author']
             buffer = _chapdict['Data']['Chapters']
             self.chapter_num = len(buffer) - 1
             #第一章节总是版权声明，过滤掉。
