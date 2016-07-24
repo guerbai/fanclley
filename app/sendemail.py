@@ -3,15 +3,14 @@
 from threading import Thread
 from flask import current_app, render_template
 from flask.ext.mail import Message
-from app import celery
-from app import create_app
+from app import celery,create_app
 from . import mail
 import time
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-
+@celery.task
 def send_async_email(app, msg):
     with app.app_context():
         mail.send(msg)
@@ -27,7 +26,7 @@ def send_email(to, subject, template, **kwargs):
     thr.start()
     return thr
 
-#@celery.task
+
 def sendto_kindle(to, bookname):
     #搞一个局部的app。
     app = create_app('default')
@@ -40,4 +39,4 @@ def sendto_kindle(to, bookname):
     #mail.send()
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
-    return 'Ok,send task done.'
+    return thr

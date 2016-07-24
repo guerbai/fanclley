@@ -4,8 +4,10 @@
 
 {% block head %}
 {{ super() }}
-<link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
-<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}" type="image/x-icon">
+<link rel="shortcut icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
+<link rel="stylesheet" href="{{ url_for('static', filename='footer.css') }}" >
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 {% endblock %}
 
 {% block navbar %}
@@ -22,7 +24,7 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-                <li><a href="{{ url_for('main.index') }}">使用方法</a></li>
+                <li><a href="{{ url_for('main.usage') }}">使用方法</a></li>
             </ul>
             <ul class="nav navbar-nav">
                 <li><a href="{{ url_for('main.letschat') }}">留言建议</a></li>
@@ -60,9 +62,18 @@
 
     {% block page_content %}{% endblock %}
 </div>
+<footer class="footer">
+      <div class="container" id="busuanzi">
+       <span id="busuanzi_container_site_uv">
+            本站访客数<span id="busuanzi_value_site_uv"></span>人次
+        </span>
+      </div>
+</footer>
 {% endblock %}
+
+
 
 {% block scripts %}
 {{ super() }}
-{{ moment.include_moment() }}
+
 {% endblock %}
