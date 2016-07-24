@@ -8,7 +8,7 @@ import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
 
-
+workdir = 'app/data/mobiworkshop/'
 @celery.task
 def hardtask(kindle_loc,origin,bookid,bookname):
 
@@ -22,16 +22,15 @@ def hardtask(kindle_loc,origin,bookid,bookname):
         task = Zonghengfree(bookid,bookname)
     else:
         task = ''
-    bname = origin+'_'+bookname
     task.get_info()
-    task.generate_txt()
+    task.generate_md()
     bname = origin+'_'+bookname
     #几行命令行指令，生成epub，再生成mobi，然后删除txt和epub文件，最后发送至kindle邮箱。
-    subprocess.call('pandoc app/data/txt/%s.txt -o app/data/mobiworkshop/%s.epub'%(bname,bname),shell=True)
-    subprocess.call('rm app/data/txt/%s.txt'%bname,shell=True)
-    subprocess.call('app/data/mobiworkshop/kindlegen -c2 app/data/mobiworkshop/%s.epub'%bname,shell=True)
-    subprocess.call('rm app/data/mobiworkshop/%s.epub'%bname,shell=True)
-    sendto_kindle(kindle_loc,bname)
+    subprocess.call('pandoc %s%s.md -o %s%s.epub'%(workdir,bname,workdir,bname),shell=True)
+    subprocess.call('rm %s%s.md'%(workdir,bname),shell=True)
+    subprocess.call('%skindlegen -c2 %s%s.epub'%(workdir,workdir,bname),shell=True)
+    subprocess.call('rm %s%s.epub'%(workdir,bname),shell=True)
+    # sendto_kindle(kindle_loc,bname)
 
     return {'status': 'Task completed!'}
 

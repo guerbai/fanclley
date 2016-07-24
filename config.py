@@ -12,15 +12,15 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_RECORD_QUERIES = True
     #mail.
-    MAIL_SERVER = 'smtp.qq.com'
-    MAIL_PORT = 587
+    MAIL_SERVER = 'smtp.163.com'
+    MAIL_PORT = 25
     MAIL_USE_TLS = True
-    MAIL_USERNAME = '617243899@qq.com'  # os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = 'pgofcpkadcdibcfc'  # os.environ.get('MAIL_PASSWORD')
+    MAIL_USERNAME = 'fanclley@163.com'  # os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = 'L501826'  # os.environ.get('MAIL_PASSWORD')
     MAIL_ASCII_ATTACHMENTS = True
     FANCLLEY_MAIL_SUBJECT_PREFIX = '[Fanclley]'
-    FANCLLEY_MAIL_SENDER = 'Fanclley Admin <617243899@qq.com>'
-    FANCLLEY_ADMIN = '617243899@qq.com'
+    FANCLLEY_MAIL_SENDER = 'Fanclley Admin <fanclley@163.com>'
+    FANCLLEY_ADMIN = 'fanclley@163.com'
     #celery.
     CELERY_BROKER_URL = 'redis://localhost:6379/0'
     CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'

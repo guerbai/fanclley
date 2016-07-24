@@ -56,8 +56,8 @@ class QidianFree:
 
     def generate_txt(self):
         try:
-            file = open(r'app/data/txt/'+u'起点'+'_'+self.bookname + '.txt', 'w')
-            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'\n% '+u'\n由fanclley推送。'+'\n\n')
+            file = open(r'app/data/mobiworkshop/'+u'起点'+'_'+self.bookname + '.txt', 'w')
+            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname+str(self.freechap_num)+u'免费章节')
             for i in range(self.freechap_num):
                 file.write(r'# '+self._chap_list[i][0]+'\n\n'+self.get_singel_novel(self._chap_list[i][1])+'\n\n')
@@ -68,13 +68,14 @@ class QidianFree:
 
     def generate_md(self):
         try:
-            file = open(r'app/data/txt/'+u'起点'+'_'+self.bookid + '.md', 'w')
+            file = open(r'app/data/mobiworkshop/'+u'起点'+'_'+self.bookname + '.md', 'w')
             #头信息。
-            file.write(r'% '+self.bookname+r'</br>% '+u'作者： '+self.authorname+r'</br>% '+u'\n由fanclley推送。'+r'</br>')
+            file.write(r'% '+self.bookname+'    \r\n'+'% '+u'作者： '+self.authorname\
+                       +'    \r\n'+r'% '+u'\n由fanclley推送。'+'    \r\n')
             for i in range(self.freechap_num):
                 anovel = self.get_singel_novel(self._chap_list[i][1])
-                anovel.replace('\r\n',r'</br>')
-                file.write('# ' + self._chap_list[i][0] + r'</br></br>' + anovel + r'</br></br>')
+                anovel.replace('\r\n','    \r\n')
+                file.write('# ' + self._chap_list[i][0] + '    \r\n' + anovel + '    \r\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
             file.close()
         except:

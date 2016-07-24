@@ -45,19 +45,19 @@ def edit_profile():
     form = EditProfileForm()
     if form.validate_on_submit():
         current_user.kindle_loc = form.kindle_loc.data
-        current_user.qidian_login = form.qidian_login.data
-        current_user.qidian_password = form.qidian_password.data
-        current_user.hongxiu_login = form.hongxiu_login.data
-        current_user.hongxiu_password = form.hongxiu_password.data
+        # current_user.qidian_login = form.qidian_login.data
+        # current_user.qidian_password = form.qidian_password.data
+        # current_user.hongxiu_login = form.hongxiu_login.data
+        # current_user.hongxiu_password = form.hongxiu_password.data
         db.session.add(current_user)
         #db.session.commit()
         flash(u'你的信息已更新.')
         return redirect(url_for('.index'))
     form.kindle_loc.data = current_user.kindle_loc
-    form.qidian_login.data = current_user.qidian_login
-    form.qidian_password.data = current_user.qidian_password
-    form.hongxiu_login.data = current_user.hongxiu_login
-    form.hongxiu_password.data = current_user.hongxiu_password
+    # form.qidian_login.data = current_user.qidian_login
+    # form.qidian_password.data = current_user.qidian_password
+    # form.hongxiu_login.data = current_user.hongxiu_login
+    # form.hongxiu_password.data = current_user.hongxiu_password
     return render_template('edit_profile.html', form=form)
 
 @main.route('/letschat',methods = ['GET','POST'])
@@ -70,6 +70,7 @@ def letschat():
             return redirect(url_for('.letschat'))
         message = Message(user_name=current_user.username,user_id=current_user.id,\
                           message = form.message.data)
+
         db.session.add(message)
         return redirect(url_for('.letschat'))
     return render_template('letschat.html',messages = messages,form = form)
