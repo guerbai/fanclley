@@ -1,12 +1,12 @@
 # -*- coding:utf-8 -*-
-from flask import render_template, redirect, url_for, abort, flash
-from flask.ext.login import login_required, current_user
+from flask import render_template, redirect, url_for, abort, flash,jsonify
+from flask.ext.login import login_required, current_user,AnonymousUserMixin
 from . import main
-from .forms import EditProfileForm
+from .forms import EditProfileForm,SearchForm,MessageForm
 from .. import db
-from forms import SearchForm
-from ..origins import Search,QidianFree,HongxiuFree,seventeenfree
-from ..sendemail import sendto_kindle
+from ..taskhandler import hardtask
+from ..origins import Search
+from ..models import Message
 
 
 @main.route('/',methods=['GET', 'POST'])
@@ -26,24 +26,18 @@ def search_res(keyword=None):
     else:
         return redirect(url_for('.index'))
 
-@main.route('/downloadfree/<origin>/<bookid>')
-def downloadfree(origin='',bookid=None):
-    if bookid != None:
-        if origin == u'起点':
-            QidianFree(bookid).generate_txt()
-        if origin == u'红袖':
-            HongxiuFree(bookid).generate_txt()
-        if origin == u'17K':
-            seventeenfree(bookid).generate_txt()
-    else:
-        flash(u'发送失败。')
-        return redirect(url_for('.index'))
+@main.route('/downloadfree/<origin>/<bookid>/<bookname>')
+def downloadfree(origin,bookid,bookname):
+
     if current_user.kindle_loc == None:
-        flash(u'请填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
-        return redirect(url_for('.index'))
-    sendto_kindle(current_user.kindle_loc,origin+'_'+str(bookid))
-    flash(u'发送成功，请注意查收！')
+        flash(u'请先填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
+    else:
+        #print abook
+        #print type(abook)
+        hardtask.delay(current_user.kindle_loc,origin,bookid,bookname)
+        flash(u'你的推送已加入任务队列，请注意查收。')
     return redirect(url_for('.index'))
+
 
 @main.route('/edit-profile', methods=['GET', 'POST'])
 @login_required
@@ -65,4 +59,22 @@ def edit_profile():
     form.hongxiu_login.data = current_user.hongxiu_login
     form.hongxiu_password.data = current_user.hongxiu_password
     return render_template('edit_profile.html', form=form)
+
+@main.route('/letschat',methods = ['GET','POST'])
+def letschat():
+    form = MessageForm()
+    messages = Message.query.order_by(Message.time.desc()).all()
+    if form.validate_on_submit():
+        if current_user.id == -1:
+            flash(u'请登录后留言。')
+            return redirect(url_for('.letschat'))
+        message = Message(user_name=current_user.username,user_id=current_user.id,\
+                          message = form.message.data)
+        db.session.add(message)
+        return redirect(url_for('.letschat'))
+    return render_template('letschat.html',messages = messages,form = form)
+
+@main.route('/usage')
+def usage():
+    return render_template('usage.html')
 

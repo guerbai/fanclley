@@ -3,6 +3,11 @@
 import requests,json
 from ..loggers import orilogger
 from .basebook import Basebook
+from bs4 import BeautifulSoup
+from qidianfree import QidianFree
+from hongxiufree import HongxiuFree
+from seventeenfree import Seventeenfree
+from zonghengfree import Zonghengfree
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -21,15 +26,13 @@ class Search:
     def search_handler(self):
         self.res_list = []
         self.search_Qidian()
-        if len(self.res_list)>5:
-            self.res_list = self.res_list[:5]
-        self.qidian_num = len(self.res_list)
         self.search_Hongxiu()
-        self.hongxiu_num = len(self.res_list)-self.qidian_num
         self.search_17k()
+        self.search_zongheng()
 
     def search_Qidian(self):
         _searchapi = 'http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=' + self.keyword
+        myres = []
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['Data']:
@@ -39,19 +42,24 @@ class Search:
                 abook.origin = u'起点'
                 abook.bookname = info['BookName']
                 abook.bookid = str(info['BookId'])
-                abook.bookstatus = info['BookStatus']
+                #abook.bookstatus = info['BookStatus']
+                abook.authorname = info['AuthorName']
                 abook.raw_url = 'http://www.qidian.com/Book/'+str(info['BookId'])+'.aspx'
-                self.res_list.append(abook)
-            if self.res_list == []:
+                myres.append(abook)
+            if len(myres)>5:
+                myres = myres[:5]
+            self.res_list+=myres
+            if myres == []:
                 orilogger.info(u'起点中文网未找到包含关键字\"' + self.keyword + u'\"的小说')
-            return self.res_list
+            return myres
         except:
             orilogger.exception(u'无法连接'+_searchapi+u',\n无法获取起点中文网搜索结果。')
-            return self.res_list
+            return myres
 
     def search_Hongxiu(self):
         _searchapi = 'http://pad.hongxiu.com/aspxnovellist/androidclient/androidclientsearch.aspx?'\
                      'method=store.search&kw=' + self.keyword + '&&order=mvote&&page=1&&per_page=5&'
+        myres = []
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['response']['data']:
@@ -59,19 +67,21 @@ class Search:
                 abook.origin = u'红袖'
                 abook.bookname = info['title']
                 abook.bookid = str(info['bid'])
-                abook.bookstatus = info['bookstatus']
+                #abook.bookstatus = info['bookstatus']
                 abook.raw_url = 'http://novel.hongxiu.com/a/'+str(info['bid'])+'/'
-                self.res_list.append(abook)
-            if self.res_list == []:
+                myres.append(abook)
+            self.res_list+=myres
+            if myres == []:
                 orilogger.info(u'红袖添香未找到包含关键字\"' + self.keyword + u'\"的小说')
-            return self.res_list
+            return myres
         except:
             orilogger.exception(u'无法连接'+_searchapi+u',\n无法获取红袖添香搜索结果。')
-            return self.res_list
+            return myres
 
 
     def search_17k(self):
         _searchapi = 'http://search.17k.com/h5/sl?q='+self.keyword+'&page=0&pageSize=5'
+        myres = []
         try:
             search_list = json.loads(self.s.get(_searchapi).content)
             for info in search_list['viewList']:
@@ -79,36 +89,40 @@ class Search:
                 abook.origin = u'17K'
                 abook.bookname = info['bookName']
                 abook.bookid = str(info['bookId'])
-                abook.bookstatus = info['bookStatus']
+                abook.authorname = info['authorPenname']
+                #abook.bookstatus = info['bookStatus']
                 abook.raw_url = 'http://www.17k.com/list/'+abook.bookid+'.html'
-                self.res_list.append(abook)
-            if self.res_list == []:
+                myres.append(abook)
+            self.res_list+=myres
+            if myres == []:
                 orilogger.info(u'17K未找到包含关键字\"' + self.keyword + u'\"的小说')
-            return self.res_list
+            return myres
         except:
             orilogger.exception(u'无法连接' + _searchapi + u',\n无法获取17K搜索结果。')
-            return self.res_list
+            return myres
 
     def search_zongheng(self):
-        _searchapi = 'http://api1.zongheng.com/api/search/book?userId=0&installId=5fd429ada47620979cf1c8e63c3cb062'\
-                     '&modelName=pisces&osVersion=19&api_key=27A28A4D4B24022E543E&operators=46002&clientVersion='\
-                     '2.4.5.10&os=android&appId=ZHKXS&key='+self.keyword+'&apn=wlan&screenH=1920&page=0&channelId'\
-                     '=A1007&model=MI+3&type=all&brand=Xiaomi&sig=357b1e6a2ab3cbcc7a85f819477ed74c&channelType=H5'\
-                     '&size=0&screenW=1080'
+        url = 'http://search.zongheng.com/search/all/' + self.keyword + '/1.html'
+        myres = []
         try:
-            search_list = json.loads(self.s.get(_searchapi).content)
-            for info in search_list['result']['bookList']:
+            res = self.s.get(url).text
+            soup = BeautifulSoup(res, 'lxml')
+            div = soup.find_all('div', class_='search_text')
+            if len(div) > 5:
+                div = div[:5]
+            for i in div:
                 abook = Basebook()
                 abook.origin = u'纵横'
-                abook.bookname = info['name']
-                abook.bookid = str(info['bookId'])
-                abook.bookstatus = info['bookStatus']
-                abook.raw_url = 'http://www.17k.com/list/' + abook.bookid + '.html'
-                self.res_list.append(abook)
-            if self.res_list == []:
-                orilogger.info(u'17K未找到包含关键字\"' + self.keyword + u'\"的小说')
-            return self.res_list
-
+                abook.bookname = i.find('h2').find('a').text
+                abook.raw_url = i.find('h2').find('a')['href']
+                abook.bookid = str(abook.raw_url.split('/')[-1].split('.')[0])
+                myres.append(abook)
+            self.res_list+=myres
+            if myres == []:
+                orilogger.info(u'纵横中文网未找到包含关键字\"' + self.keyword + u'\"的小说')
+            return myres
         except:
-            orilogger.exception(u'无法连接' + _searchapi + u',\n无法获取17K搜索结果。')
-            return self.res_list
+            orilogger.exception(u'无法连接' + url + u',\n无法获取纵横搜索结果。')
+            return myres
+
+

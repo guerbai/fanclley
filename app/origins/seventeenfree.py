@@ -7,36 +7,30 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 #17k小说站。
-class seventeenfree:
+class Seventeenfree:
 
     s = requests.session()
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
     _chap_list = []
-    bookname = ''
-    bookid = ''
+
+    origin = u'17K'
     bookstatus = ''
-    authorname = ''
 
-    def __init__(self,bookid):
+    def __init__(self, bookid, bookname):
+
         self.bookid = bookid
-        self.get_book_info()
-        self.get_chapterlist()
+        self.bookname = bookname
+        #self.raw_url = raw_url
 
-    def get_book_info(self):
-        _bookinfo_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
-        try:
-            _infodict = json.loads(self.s.get(_bookinfo_api).content)
-            self.bookname = _infodict['book']['bookName']
-            self.authorname = _infodict['book']['authorPenname']
-        except:
-            orilogger.exception(u'连接' + _bookinfo_api + u'出错！\n' + u'无法获取\"' + self.bookname + u'\"书籍信息。')
-
-    def get_chapterlist(self):
+    def get_info(self):
         _chaplist_api = 'http://client1.17k.com/rest/download/getBookVolumeSimpleListBybid?bookId='+self.bookid\
                         +'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
+        _info_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
         try:
+            _infodict = json.loads(self.s.get(_info_api).content)
+            self.authorname = _infodict['book']['authorPenname']
             _chapdict = json.loads(self.s.get(_chaplist_api).content)
             for i in _chapdict['volumeList']:
                 if i['name'] == u'作品相关':
@@ -61,12 +55,12 @@ class seventeenfree:
             return ''
 
     def generate_txt(self):
-        file = open(r'app/data/txt/' + u'17K' + '_' + self.bookid + '.txt', 'w')
+        file = open(r'app/data/txt/' + u'17K' + '_' + self.bookname + '.txt', 'w')
         try:
-            file.write(self.bookname + '\n' + u'作者： ' + self.authorname + u'\n由fanclley推送。' + '\n\n')
+            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')
             for i in range(self.freechap_num):
-                file.write(self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
+                file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
 
         except:

@@ -22,6 +22,7 @@ class User(UserMixin, db.Model):
     hongxiu_login = db.Column(db.String)
     hongxiu_password = db.Column(db.String)
 
+    messages = db.relationship('Message',backref='user')
 
 
     def __init__(self, **kwargs):
@@ -94,7 +95,20 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
+class Message(db.Model):
+    __tablename__ = 'messages'
+    id = db.Column(db.Integer,primary_key=True)
+    user_name = db.Column(db.Unicode)
+    message = db.Column(db.Text)
+    time = db.Column(db.String,default = datetime.utcnow)
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
+
 
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(int(user_id))
+
+class AnonymousUser(AnonymousUserMixin):
+    id = -1
+
+login_manager.anonymous_user = AnonymousUser
