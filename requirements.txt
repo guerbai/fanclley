@@ -22,3 +22,5 @@ six==1.4.1
 pandoc=1.12.2.1
 kindlegen=v2.9
 redis==2.8.4
+gunicorn==18.0
+psycopg2==2.5.1
