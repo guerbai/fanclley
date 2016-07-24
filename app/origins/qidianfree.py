@@ -57,7 +57,7 @@ class QidianFree:
     def generate_txt(self):
         try:
             file = open(r'app/data/txt/'+u'起点'+'_'+self.bookname + '.txt', 'w')
-            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'% '+u'\n由fanclley推送。'+'\n\n')
+            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'\n% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname+str(self.freechap_num)+u'免费章节')
             for i in range(self.freechap_num):
                 file.write(r'# '+self._chap_list[i][0]+'\n\n'+self.get_singel_novel(self._chap_list[i][1])+'\n\n')
