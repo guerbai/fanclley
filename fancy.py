@@ -6,7 +6,6 @@ from flask.ext.script import Manager, Shell
 from flask.ext.migrate import Migrate, MigrateCommand
 
 app = create_app(os.getenv('FANCLLEY_CONFIG') or 'default')
-#app.app_context().push()
 manager = Manager(app)
 migrate = Migrate(app, db)
 
