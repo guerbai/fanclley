@@ -7,6 +7,16 @@
 {{ super() }}
 <link rel="shortcut icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
 <link rel="icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
+<style type="text/css">
+  footer{
+  position: absolute;
+  bottom: 0;
+  width: auto;
+  /* Set the fixed height of the footer here */
+  height: 40px;
+  <!--background-color: #f5f5f5;-->
+  }
+</style>
 <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 {% endblock %}
 
@@ -16,7 +26,15 @@
 </div>
 
 {{ wtf.quick_form(form) }}
+<footer class="footer">
 
+        <p class="text-muted">
+            <span id="busuanzi_container_site_pv">
+                <strong>本站总访问量</strong><span id="busuanzi_value_site_pv"></span>次
+            </span>
+        </p>
+
+</footer>
 
 {% endblock %}
 

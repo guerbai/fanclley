@@ -12,5 +12,18 @@
 
 <h3>留言历史信息</h3>
 
-{% include '_post.html' %}
+<table class="table table-striped table-bordered ">
+{% for message in messages %}
+        <tbody>
+        <tr>
+            <td >{{ message.user_name}}  留言于  {{message.time}}</td>
+        </tr>
+        <tr>
+            <td >{{ message.message}}</td>
+        </tr>
+        </tbody>
+
+{% endfor %}
+</table>
+
 {% endblock %}
