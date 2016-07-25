@@ -4,10 +4,8 @@ import requests,json
 from ..loggers import orilogger
 from .basebook import Basebook
 from bs4 import BeautifulSoup
-from qidianfree import QidianFree
-from hongxiufree import HongxiuFree
-from seventeenfree import Seventeenfree
-from zonghengfree import Zonghengfree
+from antianti import USER_AGENTS,PROXIES
+import random
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -15,6 +13,7 @@ sys.setdefaultencoding("utf-8")
 class Search:
 
     s = requests.session()
+    s.headers['User-Agent'] = random.choice(USER_AGENTS)
     qidian_num = 0
     hongxiu_num = 0
 
@@ -34,7 +33,7 @@ class Search:
         _searchapi = 'http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=' + self.keyword
         myres = []
         try:
-            search_list = json.loads(self.s.get(_searchapi).content)
+            search_list = json.loads(self.s.get(_searchapi,proxies=random.choice(PROXIES)).content)
             for info in search_list['Data']:
                 if info['Type'] != 'book':
                     continue
@@ -61,7 +60,7 @@ class Search:
                      'method=store.search&kw=' + self.keyword + '&&order=mvote&&page=1&&per_page=5&'
         myres = []
         try:
-            search_list = json.loads(self.s.get(_searchapi).content)
+            search_list = json.loads(self.s.get(_searchapi,proxies=random.choice(PROXIES)).content)
             for info in search_list['response']['data']:
                 abook = Basebook()
                 abook.origin = u'红袖'
@@ -83,7 +82,7 @@ class Search:
         _searchapi = 'http://search.17k.com/h5/sl?q='+self.keyword+'&page=0&pageSize=5'
         myres = []
         try:
-            search_list = json.loads(self.s.get(_searchapi).content)
+            search_list = json.loads(self.s.get(_searchapi,proxies=random.choice(PROXIES)).content)
             for info in search_list['viewList']:
                 abook = Basebook()
                 abook.origin = u'17K'
@@ -105,7 +104,7 @@ class Search:
         url = 'http://search.zongheng.com/search/all/' + self.keyword + '/1.html'
         myres = []
         try:
-            res = self.s.get(url).text
+            res = self.s.get(url,proxies=random.choice(PROXIES)).text
             soup = BeautifulSoup(res, 'lxml')
             div = soup.find_all('div', class_='search_text')
             if len(div) > 5:

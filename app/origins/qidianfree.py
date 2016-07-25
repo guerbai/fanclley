@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 import requests,json
 from ..loggers import orilogger
+from antianti import USER_AGENTS,PROXIES
+import random
 import re
 import sys
 
@@ -13,6 +15,7 @@ class QidianFree:
 
     #一本书是一个该类对象
     s = requests.session()
+    s.headers['User-Agent'] = random.choice(USER_AGENTS)
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
@@ -31,7 +34,7 @@ class QidianFree:
     def get_info(self):
         _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
         try:
-            _chapdict = json.loads(self.s.get(_chaplist_api).content)
+            _chapdict = json.loads(self.s.get(_chaplist_api,proxies=random.choice(PROXIES)).content)
             self.authorname = _chapdict['Data']['Author']
             buffer = _chapdict['Data']['Chapters']
             self.chapter_num = len(buffer) - 1
@@ -48,7 +51,7 @@ class QidianFree:
     def get_singel_novel(self,chapterid):
         _novel_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetContent?BookId=' + self.bookid + '&ChapterId=' + chapterid
         try:
-            _novel = json.loads(self.s.get(_novel_api).content)['Data']
+            _novel = json.loads(self.s.get(_novel_api,proxies=random.choice(PROXIES)).content)['Data']
             realnovel = str(_novel).replace(u'\r\n','    \n')
             # for i in str(_novel).split(u'\r\n'):
             #     realnovel += '    '+i+u'     \n'

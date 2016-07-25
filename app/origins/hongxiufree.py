@@ -3,6 +3,8 @@
 import requests,json
 from ..loggers  import orilogger
 import sys
+import random
+from antianti import USER_AGENTS,PROXIES
 import re
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -11,6 +13,7 @@ sys.setdefaultencoding("utf-8")
 class HongxiuFree:
 
     s = requests.session()
+    s.headers['User-Agent']=random.choice(USER_AGENTS)
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
@@ -29,7 +32,7 @@ class HongxiuFree:
         try:
             pattern = re.compile(r'title":"(.*?)","bookstatus":.*?author":"(.*?)"', re.S)
             _bookinfo_api = 'http://novel.hongxiu.com/AndroidClient140401/book_cover_info/' + self.bookid + '.json'
-            res = self.s.get(_bookinfo_api).content
+            res = self.s.get(_bookinfo_api,proxies=random.choice(PROXIES)).content
             items = re.findall(pattern, res)
             for item in items:
                 self.authorname = item[1]
@@ -41,7 +44,7 @@ class HongxiuFree:
     def get_chapterlist(self):
         _chaplist_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_list/'+self.bookid+'.json'
         try:
-            _chapdict = json.loads(self.s.get(_chaplist_api).content)
+            _chapdict = json.loads(self.s.get(_chaplist_api,proxies=random.choice(PROXIES)).content)
             for i in _chapdict['response']:
                 if i['viptext'] == '0':
                     self.freechap_num += 1
@@ -54,7 +57,7 @@ class HongxiuFree:
         _novel_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_get/' + self.bookid + '_' + chapterid + '.json'
         try:
             _novel_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_get/'+self.bookid+'_'+chapterid+'.json'
-            _novel = json.loads(self.s.get(_novel_api).content)['response'][chapterid]['chapter_content']
+            _novel = json.loads(self.s.get(_novel_api,proxies=random.choice(PROXIES)).content)['response'][chapterid]['chapter_content']
             realnovel = str(_novel).replace(u'\r\n', '    \n')
             return realnovel
         except:

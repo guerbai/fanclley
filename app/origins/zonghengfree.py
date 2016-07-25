@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 import requests,json
 from ..loggers  import orilogger
+from antianti import USER_AGENTS,PROXIES
+import random
 import sys
 from bs4 import BeautifulSoup
 reload(sys)
@@ -11,6 +13,7 @@ sys.setdefaultencoding("utf-8")
 class Zonghengfree:
 
     s = requests.session()
+    s.headers['User-Agent'] = random.choice(USER_AGENTS)
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
@@ -28,7 +31,7 @@ class Zonghengfree:
     def get_info(self):
         url = 'http://book.zongheng.com/showchapter/'+self.bookid+'.html'
         try:
-            res = self.s.get(url).text
+            res = self.s.get(url,proxies=random.choice(PROXIES)).text
             soup = BeautifulSoup(res, 'lxml')
             test = soup.find('div',class_='tc txt')
             if test:
@@ -61,7 +64,7 @@ class Zonghengfree:
         url = 'http://book.zongheng.com/chapter/'+self.bookid+'/'+chapterid+'.html'
         _novel = u''
         try:
-            res = self.s.get(url).content
+            res = self.s.get(url,proxies=random.choice(PROXIES)).content
             soup = BeautifulSoup(res, 'lxml')
             wrap = soup.find('div', class_='content')
             if wrap:
