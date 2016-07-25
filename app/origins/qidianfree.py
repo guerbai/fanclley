@@ -49,7 +49,10 @@ class QidianFree:
         _novel_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetContent?BookId=' + self.bookid + '&ChapterId=' + chapterid
         try:
             _novel = json.loads(self.s.get(_novel_api).content)['Data']
-            return _novel
+            realnovel = str(_novel).replace(u'\r\n','    \n')
+            # for i in str(_novel).split(u'\r\n'):
+            #     realnovel += '    '+i+u'     \n'
+            return realnovel
         except:
             orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
             return ''
