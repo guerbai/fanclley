@@ -49,7 +49,8 @@ class Seventeenfree:
                      chapterid+'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
         try:
             _novel = json.loads(self.s.get(_novel_api).content)['content']
-            return _novel
+            realnovel = str(_novel).replace(u'\r\n', '    \n')
+            return realnovel
         except:
             orilogger.exception(u'无法获取' + _novel_api + u'的章节内容。')
             return ''
@@ -57,7 +58,7 @@ class Seventeenfree:
     def generate_txt(self):
         file = open(r'app/data/mobiworkshop/' + u'17K' + '_' + self.bookname + '.txt', 'w')
         try:
-            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'\n% '+u'\n由fanclley推送。'+'\n\n')
+            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')
             for i in range(self.freechap_num):
                 file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')

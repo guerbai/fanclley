@@ -3,6 +3,13 @@
 
 {% block title %}Fanclley{% endblock %}
 
+{% block head %}
+{{ super() }}
+<link rel="shortcut icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
+<link rel="icon" href="{{ url_for('static', filename='my_favi.ico') }}" type="image/x-icon">
+<script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+{% endblock %}
+
 {% block page_content %}
 <div class="page-header">
     <h3>欢迎使用Fanclley推送服务！</h3>
@@ -10,4 +17,6 @@
 
 {{ wtf.quick_form(form) }}
 
+
 {% endblock %}
+

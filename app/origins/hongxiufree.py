@@ -55,7 +55,8 @@ class HongxiuFree:
         try:
             _novel_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_get/'+self.bookid+'_'+chapterid+'.json'
             _novel = json.loads(self.s.get(_novel_api).content)['response'][chapterid]['chapter_content']
-            return _novel
+            realnovel = str(_novel).replace(u'\r\n', '    \n')
+            return realnovel
         except:
             orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
             return ''
@@ -63,7 +64,7 @@ class HongxiuFree:
     def generate_txt(self):
         try:
             file = open(r'app/data/mobiworkshop/' + u'红袖'+'_'+self.bookname + '.txt', 'w')
-            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+r'\n% '+u'\n由fanclley推送。'+'\n\n')
+            file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             for i in range(self.freechap_num):
                 file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
                 orilogger.info(u'已写入' + self._chap_list[i][0])
