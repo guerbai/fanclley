@@ -69,20 +69,20 @@ class QidianFree:
         except:
             orilogger.exception(u'从起点中文网生成\"'+self.bookname+u'\.txt"失败')
 
-    def generate_md(self):
-        try:
-            file = open(r'app/data/mobiworkshop/'+u'起点'+'_'+self.bookname + '.md', 'w')
-            #头信息。
-            file.write(r'% '+self.bookname+'    \r\n'+'% '+u'作者： '+self.authorname\
-                       +'    \r\n'+r'% '+u'\n由fanclley推送。'+'    \r\n')
-            for i in range(self.freechap_num):
-                anovel = self.get_singel_novel(self._chap_list[i][1])
-                anovel.replace('\r\n','    \r\n')
-                file.write('# ' + self._chap_list[i][0] + '    \r\n' + anovel + '    \r\n')
-                orilogger.info(u'已写入' + self._chap_list[i][0])
-            file.close()
-        except:
-            orilogger.exception(u'从起点中文网生成\"' + self.bookname + u'\.md"失败')
+    # def generate_md(self):
+    #     try:
+    #         file = open(r'app/data/mobiworkshop/'+u'起点'+'_'+self.bookname + '.md', 'w')
+    #         #头信息。
+    #         file.write(r'% '+self.bookname+'    \r\n'+'% '+u'作者： '+self.authorname\
+    #                    +'    \r\n'+r'% '+u'\n由fanclley推送。'+'    \r\n')
+    #         for i in range(self.freechap_num):
+    #             anovel = self.get_singel_novel(self._chap_list[i][1])
+    #             anovel.replace('\r\n','    \r\n')
+    #             file.write('# ' + self._chap_list[i][0] + '    \r\n' + anovel + '    \r\n')
+    #             orilogger.info(u'已写入' + self._chap_list[i][0])
+    #         file.close()
+    #     except:
+    #         orilogger.exception(u'从起点中文网生成\"' + self.bookname + u'\.md"失败')
 
 
 
