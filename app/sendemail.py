@@ -15,6 +15,8 @@ def send_async_email(app, msg):
     with app.app_context():
         mail.send(msg)
 
+    return {'status': 'Send task done!'}
+
 
 def send_email(to, subject, template, **kwargs):
     app = current_app._get_current_object()

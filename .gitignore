@@ -3,8 +3,8 @@
 test.py
 *.log
 migrations/
-app/data/mobiworkshop/*.txt
-app/data/mobiworkshop/*.md
-*.epub
-*.mobi
+app/data/mobiworkshop/
 *.sqlite
+*.py~
+*.txt~
+.gitignore~
