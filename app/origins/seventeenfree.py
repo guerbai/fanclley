@@ -2,6 +2,8 @@
 # -*- coding:utf-8 -*-
 import requests,json
 from ..loggers  import orilogger
+from antianti import USER_AGENTS,PROXIES
+import random
 import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -10,6 +12,7 @@ sys.setdefaultencoding("utf-8")
 class Seventeenfree:
 
     s = requests.session()
+    s.headers['User-Agent'] = random.choice(USER_AGENTS)
     chapter_num = 0
     freechap_num = 0
     vipchap_num = 0
@@ -29,7 +32,7 @@ class Seventeenfree:
                         +'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
         _info_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
         try:
-            _infodict = json.loads(self.s.get(_info_api).content)
+            _infodict = json.loads(self.s.get(_info_api,proxies=random.choice(PROXIES)).content)
             self.authorname = _infodict['book']['authorPenname']
             _chapdict = json.loads(self.s.get(_chaplist_api).content)
             for i in _chapdict['volumeList']:
@@ -48,7 +51,7 @@ class Seventeenfree:
         _novel_api = 'http://client1.17k.com/rest/download/downChapterV2?chapterId='+\
                      chapterid+'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
         try:
-            _novel = json.loads(self.s.get(_novel_api).content)['content']
+            _novel = json.loads(self.s.get(_novel_api,proxies=random.choice(PROXIES)).content)['content']
             realnovel = str(_novel).replace(u'\r\n', '    \n')
             return realnovel
         except:

@@ -10,12 +10,12 @@ import sys
 reload(sys)
 sys.setdefaultencoding("utf-8")
 
-@celery.task
+#@celery.task
 def send_async_email(app, msg):
     with app.app_context():
         mail.send(msg)
 
-    return {'status': 'Send task done!'}
+    #return {'status': 'Send task done!'}
 
 
 def send_email(to, subject, template, **kwargs):
@@ -34,8 +34,8 @@ def sendto_kindle(to, bookname):
     app = create_app('default')
     msg = Message(app.config['FANCLLEY_MAIL_SUBJECT_PREFIX']+ ' ' + u'Your book coming!',
                   sender=app.config['FANCLLEY_MAIL_SENDER'], recipients=[to])
-    msg.body = "fanclley"
-    msg.html = "<b>Fanclley provide this service for you!</b>"
+    msg.body = u"fanclley"
+    msg.html = u"<b>Fanclley provide this service for you!</b>"
     with app.open_resource(u"data/mobiworkshop/" + bookname + '.mobi') as fp:
         msg.attach('fanclley' + time.strftime("%Y-%m-%d", time.localtime()) + '.mobi', "*/*", fp.read())
     #mail.send()

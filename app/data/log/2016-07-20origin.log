@@ -1,0 +1,608 @@
+2016-07-20 17:05:11,264 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/HongxiuFree.py", line 25, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 182 (char 235)
+2016-07-20 17:05:11,357 - app.origin - ERROR - 从红袖添香网生成txt电子书失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/HongxiuFree.py", line 59, in generate_txt
+    file.write(self.bookname+'\n'+u'作者： '+self.authorname+u'\n由fanclley推送。'+'\n\n')
+AttributeError: HongxiuFree instance has no attribute 'bookname'
+2016-07-20 17:24:27,456 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/HongxiuFree.py", line 28, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 234 (char 287)
+2016-07-20 17:24:27,519 - app.origin - ERROR - 从红袖添香网生成txt电子书失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/HongxiuFree.py", line 62, in generate_txt
+    file.write(self.bookname+'\n'+u'作者： '+self.authorname+u'\n由fanclley推送。'+'\n\n')
+UnicodeEncodeError: 'ascii' codec can't encode characters in position 1-3: ordinal not in range(128)
+2016-07-20 18:18:05,752 - app.origin - INFO - 不朽凡人83免费章节
+2016-07-20 18:18:05,785 - app.origin - INFO - 已写入楔子
+2016-07-20 18:18:05,806 - app.origin - INFO - 已写入第一章 落魄王子
+2016-07-20 18:18:05,828 - app.origin - INFO - 已写入第二章 活着的艰难
+2016-07-20 18:18:05,948 - app.origin - INFO - 已写入第三章 只是凡根
+2016-07-20 18:18:05,967 - app.origin - INFO - 已写入第四章 一饭之恩
+2016-07-20 18:18:05,987 - app.origin - INFO - 已写入第五章 有些事情我很忌
+2016-07-20 18:18:06,107 - app.origin - INFO - 已写入第六章 丹汉炼药
+2016-07-20 18:18:06,218 - app.origin - INFO - 已写入第七章 首席炼药师
+2016-07-20 18:18:06,239 - app.origin - INFO - 已写入第八章 极品灵根
+2016-07-20 18:18:06,266 - app.origin - INFO - 已写入第九章 无实力无尊严
+2016-07-20 18:18:06,394 - app.origin - INFO - 已写入第十章 一线曙光
+2016-07-20 18:18:06,416 - app.origin - INFO - 已写入第十一章 就是你了
+2016-07-20 18:18:06,434 - app.origin - INFO - 已写入请求推荐票支持
+2016-07-20 18:18:06,458 - app.origin - INFO - 已写入第十二章 将轰动炼药界
+2016-07-20 18:18:06,479 - app.origin - INFO - 已写入第十三章 莫无忌的担忧
+2016-07-20 18:18:06,500 - app.origin - INFO - 已写入第十四章 轰动的九命疗伤
+2016-07-20 18:18:06,519 - app.origin - INFO - 已写入第十五章 火爆再现
+2016-07-20 18:18:06,540 - app.origin - INFO - 已写入第十六章 开拓经脉
+2016-07-20 18:18:06,562 - app.origin - INFO - 已写入第十七章 功亏一篑
+2016-07-20 18:18:06,683 - app.origin - INFO - 已写入第十八章 终于明白
+2016-07-20 18:18:06,704 - app.origin - INFO - 已写入第十九章 推出去杀了
+2016-07-20 18:18:06,731 - app.origin - INFO - 已写入第二十章 生死之间
+2016-07-20 18:18:06,852 - app.origin - INFO - 已写入第二十一章 寻找退路
+2016-07-20 18:18:06,874 - app.origin - INFO - 已写入第二十二章 加入寒府
+2016-07-20 18:18:06,929 - app.origin - INFO - 已写入第二十三章 你就是莫无忌？
+2016-07-20 18:18:06,952 - app.origin - INFO - 已写入第二十四章 雷雾森林
+2016-07-20 18:18:06,974 - app.origin - INFO - 已写入第二十五章 被逼入雷雾森林
+2016-07-20 18:18:06,994 - app.origin - INFO - 已写入第二十六章 雷雾森林的雷泽
+2016-07-20 18:18:07,015 - app.origin - INFO - 已写入第二十七章 损失惨重
+2016-07-20 18:18:07,035 - app.origin - INFO - 已写入第二十八章 找上门来
+2016-07-20 18:18:07,056 - app.origin - INFO - 已写入第二十九章 小心谨慎
+2016-07-20 18:18:07,076 - app.origin - INFO - 已写入第三十章 离开饶州
+2016-07-20 18:18:07,100 - app.origin - INFO - 已写入第三十一章 莫无忌的改变
+2016-07-20 18:18:07,212 - app.origin - INFO - 已写入第三十二章 道不同
+2016-07-20 18:18:07,234 - app.origin - INFO - 已写入第三十三章 朋友的酒
+2016-07-20 18:18:07,348 - app.origin - INFO - 已写入第三十四章 海边散市
+2016-07-20 18:18:07,368 - app.origin - INFO - 已写入第三十五章 散市女奴
+2016-07-20 18:18:07,388 - app.origin - INFO - 已写入第三十六章 莫家女人
+2016-07-20 18:18:07,504 - app.origin - INFO - 已写入第三十七章 灭门
+2016-07-20 18:18:07,613 - app.origin - INFO - 已写入第三十八章 救人
+2016-07-20 18:18:07,723 - app.origin - INFO - 已写入第三十九章 追杀
+2016-07-20 18:18:07,833 - app.origin - INFO - 已写入第四十章 别离
+2016-07-20 18:18:07,964 - app.origin - INFO - 已写入第四十一章 名额被夺
+2016-07-20 18:18:08,081 - app.origin - INFO - 已写入第四十二章 救命之恩救命还（求推荐票）
+2016-07-20 18:18:08,206 - app.origin - INFO - 已写入第四十三章 莫无忌的实力
+2016-07-20 18:18:08,405 - app.origin - INFO - 已写入第四十四章 遭遇海妖围攻
+2016-07-20 18:18:08,528 - app.origin - INFO - 已写入第四十五章 有种的人
+2016-07-20 18:18:08,634 - app.origin - INFO - 已写入第四十六章 借雷杀敌
+2016-07-20 18:18:08,741 - app.origin - INFO - 已写入第四十七章 洛海商楼的贡献分
+2016-07-20 18:18:08,854 - app.origin - INFO - 已写入第四十八章 帝都长洛城
+2016-07-20 18:18:09,108 - app.origin - INFO - 已写入第四十九章 入住天洛酒楼
+2016-07-20 18:18:09,251 - app.origin - INFO - 已写入第五十章 不朽凡人诀
+2016-07-20 18:18:09,360 - app.origin - INFO - 已写入第五十一章 练气基础
+2016-07-20 18:18:09,556 - app.origin - INFO - 已写入第五十二章 希望越大，失望越大
+2016-07-20 18:18:09,578 - app.origin - INFO - 已写入第五十三章 初窥修炼
+2016-07-20 18:18:09,726 - app.origin - INFO - 已写入第五十四章 十个呼吸
+2016-07-20 18:18:09,853 - app.origin - INFO - 已写入第五十五章 拓脉一层
+2016-07-20 18:18:09,874 - app.origin - INFO - 已写入第五十六章 昂贵的炼药设备
+2016-07-20 18:18:09,986 - app.origin - INFO - 已写入第五十七章 始终都是朋友
+2016-07-20 18:18:11,097 - app.origin - INFO - 已写入第五十八章 组队出海
+2016-07-20 18:18:11,120 - app.origin - INFO - 已写入周一凌晨请求推荐票
+2016-07-20 18:18:11,257 - app.origin - INFO - 已写入第五十九章 单枪匹马
+2016-07-20 18:18:11,377 - app.origin - INFO - 已写入第六十章 有实力才有尊敬
+2016-07-20 18:18:11,505 - app.origin - INFO - 已写入第六十一章 大度（求推荐票）
+2016-07-20 18:18:11,659 - app.origin - INFO - 已写入第六十二章 跃仙门大会
+2016-07-20 18:18:11,783 - app.origin - INFO - 已写入第六十三章 揪心的相遇
+2016-07-20 18:18:11,899 - app.origin - INFO - 已写入第六十四章 丹师九品
+2016-07-20 18:18:12,016 - app.origin - INFO - 已写入第六十五章 无字丹书
+2016-07-20 18:18:12,124 - app.origin - INFO - 已写入第六十六章 凶手
+2016-07-20 18:18:12,233 - app.origin - INFO - 已写入第六十七章 加入仙门
+2016-07-20 18:18:12,348 - app.origin - INFO - 已写入第六十八章 血藕湖
+2016-07-20 18:18:12,469 - app.origin - INFO - 已写入第六十九章 诡异的丹书
+2016-07-20 18:18:12,583 - app.origin - INFO - 已写入第七十章 暗中出手
+2016-07-20 18:18:12,692 - app.origin - INFO - 已写入第七十一章 石丹师的狗爬式
+2016-07-20 18:18:12,808 - app.origin - INFO - 已写入第七十二章 拒绝好意
+2016-07-20 18:18:12,934 - app.origin - INFO - 已写入第七十三章 临行安排
+2016-07-20 18:18:13,070 - app.origin - INFO - 已写入第七十四章 五行荒域
+2016-07-20 18:18:13,251 - app.origin - INFO - 已写入周一求推荐票
+2016-07-20 18:18:13,373 - app.origin - INFO - 已写入第七十五章 石丹师的惊慌
+2016-07-20 18:18:13,394 - app.origin - INFO - 已写入第七十六章 人无贵贱，品有高低
+2016-07-20 18:18:13,415 - app.origin - INFO - 已写入第七十七章 进入剑山淘汰赛
+2016-07-20 18:18:13,440 - app.origin - INFO - 已写入第七十八章 变故
+2016-07-20 18:18:13,459 - app.origin - INFO - 已写入第七十九章 再晋级，一品人丹师
+2016-07-20 18:44:33,765 - app.origin - ERROR - 无法连接http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=懒散初唐,
+无法获取起点中文网搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 40, in search_Qidian
+    abook.raw_url = 'http://www.qidian.com/Book/'+info['BookId']+'.aspx'
+TypeError: cannot concatenate 'str' and 'int' objects
+2016-07-20 18:44:36,552 - app.origin - INFO - 红袖添香未找到包含关键字"懒散初唐"的小说
+2016-07-20 18:44:54,802 - app.origin - ERROR - 无法连接http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=初唐,
+无法获取起点中文网搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 40, in search_Qidian
+    abook.raw_url = 'http://www.qidian.com/Book/'+info['BookId']+'.aspx'
+TypeError: cannot concatenate 'str' and 'int' objects
+2016-07-20 18:45:14,216 - app.origin - ERROR - 无法连接http://4g.if.qidian.com/Atom.axd/Api/Search/AutoComplete?key=凡人,
+无法获取起点中文网搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 40, in search_Qidian
+    abook.raw_url = 'http://www.qidian.com/Book/'+info['BookId']+'.aspx'
+TypeError: cannot concatenate 'str' and 'int' objects
+2016-07-20 18:47:27,780 - app.origin - INFO - 懒散初唐71免费章节
+2016-07-20 18:47:27,796 - app.origin - INFO - 已写入第一章 反出家门的庶子
+2016-07-20 18:47:27,818 - app.origin - INFO - 已写入第二章 吃？还是不吃？
+2016-07-20 18:47:27,836 - app.origin - INFO - 已写入第三章 送粮食的佃户
+2016-07-20 18:47:27,866 - app.origin - INFO - 已写入第四章 赚钱的办法
+2016-07-20 18:47:28,052 - app.origin - INFO - 已写入第五章 发豆芽(求推荐求收藏)
+2016-07-20 18:47:28,163 - app.origin - INFO - 已写入第六章 豆芽上市(求推荐求收藏)
+2016-07-20 18:47:28,180 - app.origin - INFO - 已写入第七章 美好前景下的隐忧
+2016-07-20 18:47:28,294 - app.origin - INFO - 已写入第八章 杀猪饭
+2016-07-20 18:47:28,432 - app.origin - INFO - 已写入第九章 自称家奴的大将军
+2016-07-20 18:47:28,714 - app.origin - INFO - 已写入第十章 请马爷吃饭（求推荐收藏）
+2016-07-20 18:47:28,822 - app.origin - INFO - 已写入第十一章 老狐狸
+2016-07-20 18:47:28,840 - app.origin - INFO - 已写入第十二章 原来是他
+2016-07-20 18:47:29,106 - app.origin - INFO - 已写入第十三章 懒散的日子结束了（求推荐收藏）
+2016-07-20 18:47:29,224 - app.origin - INFO - 已写入第十四章 有人受伤
+2016-07-20 18:47:29,338 - app.origin - INFO - 已写入第十五章 伤口缝合
+2016-07-20 18:47:29,450 - app.origin - INFO - 已写入第十六章 公主与驸马的八卦
+2016-07-20 18:47:29,600 - app.origin - INFO - 已写入第十七章 昌乐之战
+2016-07-20 18:47:29,714 - app.origin - INFO - 已写入第十八章 要做官了？
+2016-07-20 18:47:29,974 - app.origin - INFO - 已写入第十九章 散官和胰子
+2016-07-20 18:47:30,226 - app.origin - INFO - 已写入第二十章 多喝水
+2016-07-20 18:47:30,379 - app.origin - INFO - 已写入第二十一章 在长安
+2016-07-20 18:47:30,616 - app.origin - INFO - 已写入第二十二章 赏官赏女人
+2016-07-20 18:47:30,737 - app.origin - INFO - 已写入第二十三章 来自南梁的侍女
+2016-07-20 18:47:30,886 - app.origin - INFO - 已写入第二十四章 脑子有病的李休
+2016-07-20 18:47:31,212 - app.origin - INFO - 已写入第二十五章 天天有肉吃
+2016-07-20 18:47:31,331 - app.origin - INFO - 已写入第二十六章 纸牌的影响(求推荐收藏)
+2016-07-20 18:47:31,459 - app.origin - INFO - 已写入第二十七章 突厥人杀来
+2016-07-20 18:47:31,592 - app.origin - INFO - 已写入第二十八章 公主重伤（求推荐收藏）
+2016-07-20 18:47:31,753 - app.origin - INFO - 已写入第二十九章 伤口感染
+2016-07-20 18:47:31,875 - app.origin - INFO - 已写入第三十章 蒸馏酒精
+2016-07-20 18:47:32,012 - app.origin - INFO - 已写入第三十一章 公主醒来
+2016-07-20 18:47:32,146 - app.origin - INFO - 已写入第三十二章 妄议军事
+2016-07-20 18:47:32,330 - app.origin - INFO - 已写入第三十三章 马爷的过去
+2016-07-20 18:47:32,446 - app.origin - INFO - 已写入第三十四章 突利之恨
+2016-07-20 18:47:32,578 - app.origin - INFO - 已写入第三十五章 吃羊肉
+2016-07-20 18:47:32,815 - app.origin - INFO - 已写入第三十六章 人才变厨子
+2016-07-20 18:47:33,068 - app.origin - INFO - 已写入第三十七章 勇哉，秦琼！
+2016-07-20 18:47:33,185 - app.origin - INFO - 已写入第三十八章 公主你不要逼我
+2016-07-20 18:47:33,309 - app.origin - INFO - 已写入第三十九章 李休VS柴绍
+2016-07-20 18:47:33,442 - app.origin - INFO - 已写入第四十章 平阳公主的往事
+2016-07-20 18:47:33,654 - app.origin - INFO - 已写入第四十一章 给公主做饭
+2016-07-20 18:47:33,790 - app.origin - INFO - 已写入第四十二章 李渊与裴寂
+2016-07-20 18:47:33,914 - app.origin - INFO - 已写入第四十三章 送给公主的惊喜
+2016-07-20 18:47:34,030 - app.origin - INFO - 已写入第四十四章 轮椅
+2016-07-20 18:47:34,164 - app.origin - INFO - 已写入第四十五章 李渊来了
+2016-07-20 18:47:34,294 - app.origin - INFO - 已写入第四十六章 相亲大会
+2016-07-20 18:47:34,726 - app.origin - INFO - 已写入第四十七章 又见柴绍
+2016-07-20 18:47:34,854 - app.origin - INFO - 已写入第四十八章 逼上绝路
+2016-07-20 18:47:36,350 - app.origin - INFO - 已写入第四十九章 才气逼人
+2016-07-20 18:47:36,475 - app.origin - INFO - 已写入第五十章 有家不能回
+2016-07-20 18:47:36,595 - app.origin - INFO - 已写入第五十一章 回家
+2016-07-20 18:47:36,758 - app.origin - INFO - 已写入第五十二章 浇地的难题
+2016-07-20 18:47:36,940 - app.origin - INFO - 已写入第五十三章 两种水车
+2016-07-20 18:47:37,078 - app.origin - INFO - 已写入第五十四章 死不认账
+2016-07-20 18:47:37,202 - app.origin - INFO - 已写入第五十五章 忙里偷闲
+2016-07-20 18:47:37,311 - app.origin - INFO - 已写入第五十六章 邪王老丈人
+2016-07-20 18:47:37,430 - app.origin - INFO - 已写入第五十七章 李靖要回来了
+2016-07-20 18:47:37,816 - app.origin - INFO - 已写入第五十八章 水车作坊
+2016-07-20 18:47:38,943 - app.origin - INFO - 已写入第五十九章 嫡母红拂女
+2016-07-20 18:47:39,056 - app.origin - INFO - 已写入第六十章 回家
+2016-07-20 18:47:39,267 - app.origin - INFO - 已写入第六十一章 初见李靖
+2016-07-20 18:47:39,385 - app.origin - INFO - 已写入第六十二章 大闹李府
+2016-07-20 18:47:39,593 - app.origin - INFO - 已写入第六十三章 七娘醒了
+2016-07-20 18:47:39,895 - app.origin - INFO - 已写入第六十四章 恩断义绝
+2016-07-20 18:47:40,009 - app.origin - INFO - 已写入第六十五章 史上十大渣爹
+2016-07-20 18:47:40,159 - app.origin - INFO - 已写入第六十六章 与李世民打赌
+2016-07-20 18:47:40,280 - app.origin - INFO - 已写入第六十七章 平阳来访
+2016-07-20 18:47:40,465 - app.origin - INFO - 已写入第六十八章 河边谈心（求三江票）
+2016-07-20 18:47:40,614 - app.origin - INFO - 已写入第六十九章 李休赢了（求三江票）
+2016-07-20 18:47:40,633 - app.origin - INFO - 已写入第七十章 建造新宅院
+2016-07-20 18:47:40,786 - app.origin - INFO - 已写入第七十一章 太子的请柬
+2016-07-20 18:47:54,658 - app.origin - INFO - 起点中文网未找到包含关键字"总裁的掌中宝妻"的小说
+2016-07-20 18:51:17,624 - app.origin - INFO - 起点中文网未找到包含关键字"总裁的掌中宝妻"的小说
+2016-07-20 18:51:19,900 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/hongxiufree.py", line 31, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 234 (char 287)
+2016-07-20 18:51:22,184 - app.origin - INFO - 已写入【001】已婚少妇苏沁宝
+2016-07-20 18:51:22,245 - app.origin - INFO - 已写入【002】我老公是个富可敌国的大人物
+2016-07-20 18:51:22,285 - app.origin - INFO - 已写入【003】很好，苏沁宝，你要造反？
+2016-07-20 18:51:22,326 - app.origin - INFO - 已写入【004】你姐姐订婚的好日子，别哭丧着脸
+2016-07-20 18:51:22,361 - app.origin - INFO - 已写入【005】气场威严的骑士先生，从天而降
+2016-07-20 18:51:22,405 - app.origin - INFO - 已写入【006】第一次有人这样护着她
+2016-07-20 18:51:22,445 - app.origin - INFO - 已写入【007】猫咪一样的小家伙脸蛋烧得通红
+2016-07-20 18:51:22,476 - app.origin - INFO - 已写入【008】小东西，谁派你来的？
+2016-07-20 18:51:22,517 - app.origin - INFO - 已写入【009】那晚……你也叫我叔叔
+2016-07-20 18:51:22,547 - app.origin - INFO - 已写入【010】男人气息迫近，目光灼灼：就这么怕我？
+2016-07-20 18:51:22,585 - app.origin - INFO - 已写入【011】薄先生说，太太的开支无上限
+2016-07-20 18:51:22,619 - app.origin - INFO - 已写入【012】仿佛关心小女孩的温柔叔叔
+2016-07-20 18:51:22,655 - app.origin - INFO - 已写入【013】所以，是你命令苏沁宝去买咖啡？
+2016-07-20 18:51:22,696 - app.origin - INFO - 已写入【014】越先生为她撑腰？这小实习生的后台……
+2016-07-20 18:51:22,730 - app.origin - INFO - 已写入【015】再犯，叔叔要罚你
+2016-07-20 18:51:22,767 - app.origin - INFO - 已写入【016】你老公薄先生面儿都没露过，你竟然怀孕了？！
+2016-07-20 18:51:22,807 - app.origin - INFO - 已写入【017】叔叔，我怀孕了，你是孩子的爸爸！
+2016-07-20 18:51:22,845 - app.origin - INFO - 已写入【018】沁宝，告诉叔叔，你为什么觉得自己怀孕了？
+2016-07-20 18:51:22,890 - app.origin - INFO - 已写入【019】我们小沁宝吓坏了，叔叔以后都不骗你了
+2016-07-20 18:51:22,930 - app.origin - INFO - 已写入【020】叔叔你就行行好，人家请不起太贵的
+2016-07-20 18:51:22,972 - app.origin - INFO - 已写入【021】沁宝软绵绵地撒娇：我会被打手心的……
+2016-07-20 18:51:23,011 - app.origin - INFO - 已写入【022】我是有夫之妇！你这样……是不对的！
+2016-07-20 18:51:23,073 - app.origin - INFO - 已写入【023】沁宝蹬着腿：你放开我！朋友妻、不可欺！
+2016-07-20 18:51:23,112 - app.origin - INFO - 已写入【024】我以为你是故意露给我看的
+2016-07-20 18:51:23,152 - app.origin - INFO - 已写入【025】今后，我只是你的老板，私下毫无交集
+2016-07-20 18:51:23,192 - app.origin - INFO - 已写入【026】只听男人轻哼一声，低笑，“这谁啊？”
+2016-07-20 18:51:23,228 - app.origin - INFO - 已写入【027】越叔叔别赶我走！我们差点就……你得保护我！
+2016-07-20 18:51:23,271 - app.origin - INFO - 已写入【028】只怕自己再说错一句半句，越粲真的会拎起她丢出门外
+2016-07-20 18:51:23,311 - app.origin - INFO - 已写入【029】苏沁宝，叔叔现在给你上堂课
+2016-07-20 18:51:23,357 - app.origin - INFO - 已写入【030】帝王般的男人，揽着他受了惊的小媳妇儿
+2016-07-20 18:51:23,393 - app.origin - INFO - 已写入【031】越先生的养成之路，路漫漫其修远兮
+2016-07-20 18:51:23,436 - app.origin - INFO - 已写入【032】他嗤笑：几千万，你请我吃钻石么？
+2016-07-20 18:51:23,483 - app.origin - INFO - 已写入【033】苏沁宝，你觉得我应该怎么罚你？
+2016-07-20 18:51:23,529 - app.origin - INFO - 已写入【034】女孩贝齿咬着唇瓣，“越先生，我有个不情之请……”
+2016-07-20 18:51:23,568 - app.origin - INFO - 已写入【035】连我爸爸都没有打过我，你凭什么，混蛋！
+2016-07-20 18:51:23,605 - app.origin - INFO - 已写入【036】你仗着权势和金钱，肆意折辱我这个父母双亡的小女孩
+2016-07-20 18:51:23,649 - app.origin - INFO - 已写入【037】她是贱人生的野种
+2016-07-20 18:51:23,688 - app.origin - INFO - 已写入【038】和你家大boss闹别扭惹？
+2016-07-20 18:51:23,725 - app.origin - INFO - 已写入【039】总有给薄悦生戴了顶隐形绿帽子的感觉
+2016-07-20 18:51:23,767 - app.origin - INFO - 已写入【040】叔叔错了，叔叔不知道我们沁宝这么怕疼……
+2016-07-20 18:51:23,808 - app.origin - INFO - 已写入【041】泪哒哒的小东西，湿湿软软，真要命！
+2016-07-20 18:51:23,845 - app.origin - INFO - 已写入【042】靳伯受惊了，先生怀里竟抱着熟睡的太太
+2016-07-20 18:51:23,890 - app.origin - INFO - 已写入【043】她居然耍酒疯的时候打给薄悦生！
+2016-07-20 18:51:23,934 - app.origin - INFO - 已写入【044】先生说，再发现您酗酒……关禁闭两个月
+2016-07-20 18:51:23,969 - app.origin - INFO - 已写入【045】我借你五千万，到四季酒店找我
+2016-07-20 18:51:24,010 - app.origin - INFO - 已写入【046】谢大少的条件是什么，陪二位玩三人行？
+2016-07-20 18:51:24,046 - app.origin - INFO - 已写入【047】那是薄悦生的心头好，他动怒了可怎么办
+2016-07-20 18:51:24,085 - app.origin - INFO - 已写入【048】薄氏全球通master，这张是薄先生的副卡！
+2016-07-20 18:51:24,120 - app.origin - INFO - 已写入【049】给我砸！
+2016-07-20 18:51:24,175 - app.origin - INFO - 已写入【050】五千万，陪叔叔一晚，叔叔给你
+2016-07-20 18:51:24,215 - app.origin - INFO - 已写入【051】才，才没有呢！我为什么要喜，喜欢你……
+2016-07-20 18:51:24,253 - app.origin - INFO - 已写入【052】越叔叔，求你不要这样弄我！
+2016-07-20 18:51:24,295 - app.origin - INFO - 已写入【053】娇憨地嘟着唇，哼哼唧唧像只小猪似的
+2016-07-20 18:51:24,335 - app.origin - INFO - 已写入【054】城府极深的猎人，诱哄着他的小兽兽
+2016-07-20 18:51:24,374 - app.origin - INFO - 已写入【055】哥哥，我错了，我再也不敢了……
+2016-07-20 18:51:24,416 - app.origin - INFO - 已写入【056】我是有夫之妇，有夫之妇你懂嘛！
+2016-07-20 18:51:24,464 - app.origin - INFO - 已写入【057】小实习生跪在大老板身前，起起伏伏……
+2016-07-20 18:51:24,508 - app.origin - INFO - 已写入【058】您别动气，苏小姐还小，小姑娘都爱惜头发
+2016-07-20 18:51:24,554 - app.origin - INFO - 已写入【059】沁宝，你好好看着，什么叫——强迫你！
+2016-07-20 18:51:24,594 - app.origin - INFO - 已写入【060】我恨你，越粲，你根本不配我喜欢你
+2016-07-20 18:51:24,639 - app.origin - INFO - 已写入【061】究竟还要等多久，我才能给爸爸报仇
+2016-07-20 18:51:24,677 - app.origin - INFO - 已写入【062】沁宝惊悚地瞪大眼睛，仿佛盯着一只庞大的怪兽
+2016-07-20 18:51:24,723 - app.origin - INFO - 已写入【063】女孩颤抖着小手，攥紧离婚协议书……
+2016-07-20 18:51:24,759 - app.origin - INFO - 已写入【064】我的小太太，军婚，你想怎么离？
+2016-07-20 18:54:15,223 - app.origin - INFO - 起点中文网未找到包含关键字"总裁的掌中宝妻"的小说
+2016-07-20 18:54:17,562 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/hongxiufree.py", line 31, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 234 (char 287)
+2016-07-20 18:54:17,659 - app.origin - INFO - 已写入【001】已婚少妇苏沁宝
+2016-07-20 18:54:19,808 - app.origin - INFO - 已写入【002】我老公是个富可敌国的大人物
+2016-07-20 18:54:19,864 - app.origin - INFO - 已写入【003】很好，苏沁宝，你要造反？
+2016-07-20 18:54:19,929 - app.origin - INFO - 已写入【004】你姐姐订婚的好日子，别哭丧着脸
+2016-07-20 18:54:19,984 - app.origin - INFO - 已写入【005】气场威严的骑士先生，从天而降
+2016-07-20 18:54:20,027 - app.origin - INFO - 已写入【006】第一次有人这样护着她
+2016-07-20 18:54:20,071 - app.origin - INFO - 已写入【007】猫咪一样的小家伙脸蛋烧得通红
+2016-07-20 18:54:20,109 - app.origin - INFO - 已写入【008】小东西，谁派你来的？
+2016-07-20 18:54:20,156 - app.origin - INFO - 已写入【009】那晚……你也叫我叔叔
+2016-07-20 18:54:20,196 - app.origin - INFO - 已写入【010】男人气息迫近，目光灼灼：就这么怕我？
+2016-07-20 18:54:20,241 - app.origin - INFO - 已写入【011】薄先生说，太太的开支无上限
+2016-07-20 18:54:20,287 - app.origin - INFO - 已写入【012】仿佛关心小女孩的温柔叔叔
+2016-07-20 18:54:20,330 - app.origin - INFO - 已写入【013】所以，是你命令苏沁宝去买咖啡？
+2016-07-20 18:54:20,369 - app.origin - INFO - 已写入【014】越先生为她撑腰？这小实习生的后台……
+2016-07-20 18:54:20,404 - app.origin - INFO - 已写入【015】再犯，叔叔要罚你
+2016-07-20 18:54:20,449 - app.origin - INFO - 已写入【016】你老公薄先生面儿都没露过，你竟然怀孕了？！
+2016-07-20 18:54:20,490 - app.origin - INFO - 已写入【017】叔叔，我怀孕了，你是孩子的爸爸！
+2016-07-20 18:54:20,536 - app.origin - INFO - 已写入【018】沁宝，告诉叔叔，你为什么觉得自己怀孕了？
+2016-07-20 18:54:20,609 - app.origin - INFO - 已写入【019】我们小沁宝吓坏了，叔叔以后都不骗你了
+2016-07-20 18:54:20,659 - app.origin - INFO - 已写入【020】叔叔你就行行好，人家请不起太贵的
+2016-07-20 18:54:20,700 - app.origin - INFO - 已写入【021】沁宝软绵绵地撒娇：我会被打手心的……
+2016-07-20 18:54:20,739 - app.origin - INFO - 已写入【022】我是有夫之妇！你这样……是不对的！
+2016-07-20 18:54:20,776 - app.origin - INFO - 已写入【023】沁宝蹬着腿：你放开我！朋友妻、不可欺！
+2016-07-20 18:54:20,817 - app.origin - INFO - 已写入【024】我以为你是故意露给我看的
+2016-07-20 18:54:20,863 - app.origin - INFO - 已写入【025】今后，我只是你的老板，私下毫无交集
+2016-07-20 18:54:20,916 - app.origin - INFO - 已写入【026】只听男人轻哼一声，低笑，“这谁啊？”
+2016-07-20 18:54:20,954 - app.origin - INFO - 已写入【027】越叔叔别赶我走！我们差点就……你得保护我！
+2016-07-20 18:54:21,003 - app.origin - INFO - 已写入【028】只怕自己再说错一句半句，越粲真的会拎起她丢出门外
+2016-07-20 18:54:21,045 - app.origin - INFO - 已写入【029】苏沁宝，叔叔现在给你上堂课
+2016-07-20 18:54:21,092 - app.origin - INFO - 已写入【030】帝王般的男人，揽着他受了惊的小媳妇儿
+2016-07-20 18:54:21,133 - app.origin - INFO - 已写入【031】越先生的养成之路，路漫漫其修远兮
+2016-07-20 18:54:21,179 - app.origin - INFO - 已写入【032】他嗤笑：几千万，你请我吃钻石么？
+2016-07-20 18:54:21,218 - app.origin - INFO - 已写入【033】苏沁宝，你觉得我应该怎么罚你？
+2016-07-20 18:54:21,266 - app.origin - INFO - 已写入【034】女孩贝齿咬着唇瓣，“越先生，我有个不情之请……”
+2016-07-20 18:54:21,304 - app.origin - INFO - 已写入【035】连我爸爸都没有打过我，你凭什么，混蛋！
+2016-07-20 18:54:21,346 - app.origin - INFO - 已写入【036】你仗着权势和金钱，肆意折辱我这个父母双亡的小女孩
+2016-07-20 18:54:21,399 - app.origin - INFO - 已写入【037】她是贱人生的野种
+2016-07-20 18:54:21,436 - app.origin - INFO - 已写入【038】和你家大boss闹别扭惹？
+2016-07-20 18:54:21,477 - app.origin - INFO - 已写入【039】总有给薄悦生戴了顶隐形绿帽子的感觉
+2016-07-20 18:54:21,524 - app.origin - INFO - 已写入【040】叔叔错了，叔叔不知道我们沁宝这么怕疼……
+2016-07-20 18:54:21,564 - app.origin - INFO - 已写入【041】泪哒哒的小东西，湿湿软软，真要命！
+2016-07-20 18:54:21,618 - app.origin - INFO - 已写入【042】靳伯受惊了，先生怀里竟抱着熟睡的太太
+2016-07-20 18:54:21,686 - app.origin - INFO - 已写入【043】她居然耍酒疯的时候打给薄悦生！
+2016-07-20 18:54:21,731 - app.origin - INFO - 已写入【044】先生说，再发现您酗酒……关禁闭两个月
+2016-07-20 18:54:21,786 - app.origin - INFO - 已写入【045】我借你五千万，到四季酒店找我
+2016-07-20 18:54:21,882 - app.origin - INFO - 已写入【046】谢大少的条件是什么，陪二位玩三人行？
+2016-07-20 18:54:21,960 - app.origin - INFO - 已写入【047】那是薄悦生的心头好，他动怒了可怎么办
+2016-07-20 18:54:22,031 - app.origin - INFO - 已写入【048】薄氏全球通master，这张是薄先生的副卡！
+2016-07-20 18:54:22,086 - app.origin - INFO - 已写入【049】给我砸！
+2016-07-20 18:54:24,136 - app.origin - INFO - 已写入【050】五千万，陪叔叔一晚，叔叔给你
+2016-07-20 18:54:24,177 - app.origin - INFO - 已写入【051】才，才没有呢！我为什么要喜，喜欢你……
+2016-07-20 18:54:24,219 - app.origin - INFO - 已写入【052】越叔叔，求你不要这样弄我！
+2016-07-20 18:54:24,254 - app.origin - INFO - 已写入【053】娇憨地嘟着唇，哼哼唧唧像只小猪似的
+2016-07-20 18:54:24,293 - app.origin - INFO - 已写入【054】城府极深的猎人，诱哄着他的小兽兽
+2016-07-20 18:54:24,332 - app.origin - INFO - 已写入【055】哥哥，我错了，我再也不敢了……
+2016-07-20 18:54:24,372 - app.origin - INFO - 已写入【056】我是有夫之妇，有夫之妇你懂嘛！
+2016-07-20 18:54:24,412 - app.origin - INFO - 已写入【057】小实习生跪在大老板身前，起起伏伏……
+2016-07-20 18:54:24,447 - app.origin - INFO - 已写入【058】您别动气，苏小姐还小，小姑娘都爱惜头发
+2016-07-20 18:54:24,488 - app.origin - INFO - 已写入【059】沁宝，你好好看着，什么叫——强迫你！
+2016-07-20 18:54:24,529 - app.origin - INFO - 已写入【060】我恨你，越粲，你根本不配我喜欢你
+2016-07-20 18:54:24,565 - app.origin - INFO - 已写入【061】究竟还要等多久，我才能给爸爸报仇
+2016-07-20 18:54:24,603 - app.origin - INFO - 已写入【062】沁宝惊悚地瞪大眼睛，仿佛盯着一只庞大的怪兽
+2016-07-20 18:54:24,639 - app.origin - INFO - 已写入【063】女孩颤抖着小手，攥紧离婚协议书……
+2016-07-20 18:54:24,681 - app.origin - INFO - 已写入【064】我的小太太，军婚，你想怎么离？
+2016-07-20 18:56:50,217 - app.origin - INFO - 起点中文网未找到包含关键字"大晴"的小说
+2016-07-20 18:56:53,906 - app.origin - ERROR - 无法连接http://pad.hongxiu.com/aspxnovellist/androidclient/androidclientsearch.aspx?、method=store.search&kw=大晴&&order=mvote&&page=1&&per_page=5&,
+无法获取红袖添香搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 53, in search_Hongxiu
+    search_list = json.loads(self.s.get(_searchapi).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 225 (char 309)
+2016-07-20 18:57:33,305 - app.origin - INFO - 起点中文网未找到包含关键字"娱记鲜妻"的小说
+2016-07-20 18:57:39,022 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/hongxiufree.py", line 31, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 244 (char 297)
+2016-07-20 18:57:39,109 - app.origin - INFO - 已写入【001】车咚
+2016-07-20 18:57:39,239 - app.origin - INFO - 已写入【002】五万块，足够
+2016-07-20 18:57:39,276 - app.origin - INFO - 已写入【003】他说想她，这种鬼话她也信？
+2016-07-20 18:57:39,325 - app.origin - INFO - 已写入【004】一个两个都这样对待她
+2016-07-20 18:57:39,364 - app.origin - INFO - 已写入【005】三年了，还忘不了？
+2016-07-20 18:57:39,405 - app.origin - INFO - 已写入【006】别人的青梅都是柔情似水
+2016-07-20 18:57:39,493 - app.origin - INFO - 已写入【007】她到了如今还爱着他？
+2016-07-20 18:57:39,539 - app.origin - INFO - 已写入【008】不会肤浅的栽倒在他这副好皮囊里
+2016-07-20 18:57:39,583 - app.origin - INFO - 已写入【009】宋公子定然是女人们趋之若鹜追求的对象
+2016-07-20 18:57:39,627 - app.origin - INFO - 已写入【010】卑劣的不愿意放手
+2016-07-20 18:57:39,667 - app.origin - INFO - 已写入【011】想吃回头草，没门！
+2016-07-20 18:57:39,721 - app.origin - INFO - 已写入【012】难道在她的心里宋子琰就是比他强？
+2016-07-20 18:57:39,765 - app.origin - INFO - 已写入【013】不觉得欠他一个解释？
+2016-07-20 18:57:39,811 - app.origin - INFO - 已写入【014】铂金戒指
+2016-07-20 18:57:39,860 - app.origin - INFO - 已写入【015】水手服挺适合她
+2016-07-20 18:57:39,904 - app.origin - INFO - 已写入【016】假面王子出现了
+2016-07-20 18:57:39,942 - app.origin - INFO - 已写入【017】官配CP
+2016-07-20 18:57:39,982 - app.origin - INFO - 已写入【018】不会在原地一直等他
+2016-07-20 18:57:40,021 - app.origin - INFO - 已写入【019】一碰她就犯恶心
+2016-07-20 18:57:40,061 - app.origin - INFO - 已写入【020】三天后，聂诗回国
+2016-07-20 18:57:40,101 - app.origin - INFO - 已写入【021】没应酬也不见得他多想回这个家
+2016-07-20 18:57:40,151 - app.origin - INFO - 已写入【022】人不可能永远都那么好运
+2016-07-20 18:57:40,199 - app.origin - INFO - 已写入【023】人间极品
+2016-07-20 18:57:40,240 - app.origin - INFO - 已写入【024】追求她的男人可以从这里排到法国
+2016-07-20 18:57:40,281 - app.origin - INFO - 已写入【025】大叔都是配小萝莉
+2016-07-20 18:57:40,323 - app.origin - INFO - 已写入【026】一个女人太拼的话一点都不可爱
+2016-07-20 18:57:40,363 - app.origin - INFO - 已写入【027】从头到尾放不下过去的人只有她
+2016-07-20 18:57:40,402 - app.origin - INFO - 已写入【028】但凡你这个年纪的女生都应该拥有一颗少女心
+2016-07-20 18:57:40,443 - app.origin - INFO - 已写入【029】早几年前的时候，你怎么不让我自重
+2016-07-20 18:57:40,496 - app.origin - INFO - 已写入【030】怎么？害羞了？
+2016-07-20 18:57:40,532 - app.origin - INFO - 已写入【031】她在赌那个女人在他心目中的地位
+2016-07-20 18:57:40,571 - app.origin - INFO - 已写入【032】收拾她，刻不容缓
+2016-07-20 18:57:40,608 - app.origin - INFO - 已写入【033】永远都不要试图远离他
+2016-07-20 18:57:40,650 - app.origin - INFO - 已写入【034】“precious”珠宝公司，闻名全球只此一家
+2016-07-20 18:57:40,692 - app.origin - INFO - 已写入【035】说不定他们早就勾搭在一起了
+2016-07-20 18:57:40,737 - app.origin - INFO - 已写入【036】你就只会这点不入流的伎俩
+2016-07-20 18:57:40,773 - app.origin - INFO - 已写入【037】是她吧？你手机里的照片
+2016-07-20 18:57:40,812 - app.origin - INFO - 已写入【038】从天而降的学长
+2016-07-20 18:57:40,853 - app.origin - INFO - 已写入【039】彼此的舞伴
+2016-07-20 18:57:40,891 - app.origin - INFO - 已写入【040】我不介意用我的方式堵住你的嘴
+2016-07-20 18:57:40,943 - app.origin - INFO - 已写入【041】他也不是吃素的主
+2016-07-20 18:57:40,991 - app.origin - INFO - 已写入【042】你这么快就看上我们学长了？
+2016-07-20 18:57:41,035 - app.origin - INFO - 已写入【043】想必她和大哥关系匪浅
+2016-07-20 18:57:41,072 - app.origin - INFO - 已写入【044】你要养我吗？我求之不得
+2016-07-20 18:57:41,110 - app.origin - INFO - 已写入【045】韩式泳衣遮肚皮
+2016-07-20 18:57:41,152 - app.origin - INFO - 已写入【046】人工呼吸，他不行
+2016-07-20 18:57:41,196 - app.origin - INFO - 已写入【047】琰哥哥，知道我找你有多辛苦？
+2016-07-20 18:57:41,233 - app.origin - INFO - 已写入【048】为了他，心甘情愿放弃更好的前途
+2016-07-20 18:57:41,278 - app.origin - INFO - 已写入【049】胆儿肥，偷酒喝，还是82年拉菲
+2016-07-20 18:57:41,314 - app.origin - INFO - 已写入【050】陪笑不够，还要陪酒
+2016-07-20 18:57:41,354 - app.origin - INFO - 已写入【051】从他的眼里看出了对她的兴趣
+2016-07-20 18:57:41,404 - app.origin - INFO - 已写入【052】他会如此肤浅，只看女人外表？
+2016-07-20 18:57:41,446 - app.origin - INFO - 已写入【053】女人都是口是心非的动物
+2016-07-20 18:57:41,483 - app.origin - INFO - 已写入【054】还没有他碰不了的女人
+2016-07-20 18:57:41,522 - app.origin - INFO - 已写入【055】抓他来当挡箭牌
+2016-07-20 18:57:41,569 - app.origin - INFO - 已写入【056】吻戏都拍过了，还装纯呢！
+2016-07-20 18:57:41,610 - app.origin - INFO - 已写入【057】做不成恋人，至少还是朋友
+2016-07-20 18:57:41,651 - app.origin - INFO - 已写入【058】你愿意永远跟廖奚在一起吗？
+2016-07-20 18:57:41,693 - app.origin - INFO - 已写入【059】甩掉宋子琰，我比他更解风情
+2016-07-20 18:57:41,733 - app.origin - INFO - 已写入【060】安排了一门相亲
+2016-07-20 18:57:41,790 - app.origin - INFO - 已写入【061】渐渐疏离，比陌生人还不如
+2016-07-20 18:57:41,859 - app.origin - INFO - 已写入【062】会给她找个名当户对的丈夫
+2016-07-20 18:57:41,905 - app.origin - INFO - 已写入【063】小丫头，我们还是挺有缘分
+2016-07-20 18:57:41,941 - app.origin - INFO - 已写入【064】天价翡翠镯子
+2016-07-20 18:57:41,982 - app.origin - INFO - 已写入【065】搞砸相亲，有你好看
+2016-07-20 18:57:42,023 - app.origin - INFO - 已写入【066】小太妹，烟熏妆
+2016-07-20 18:57:42,068 - app.origin - INFO - 已写入【067】奥斯卡影后水平
+2016-07-20 18:57:42,110 - app.origin - INFO - 已写入【068】居家好男人
+2016-07-20 18:57:42,149 - app.origin - INFO - 已写入【069】谁嫁给他才是有福气
+2016-07-20 18:57:42,191 - app.origin - INFO - 已写入【070】喝酒也要分人？
+2016-07-20 18:57:42,232 - app.origin - INFO - 已写入【071】大坏蛋，为什么不要我？
+2016-07-20 18:57:42,285 - app.origin - INFO - 已写入【072】从来没有见过像你这么蠢的女人
+2016-07-20 18:57:42,328 - app.origin - INFO - 已写入【073】无家可归的她
+2016-07-20 19:01:54,783 - app.origin - ERROR - 于红袖添香获取信息失败！
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/hongxiufree.py", line 31, in get_book_info
+    res = json.loads(self.s.get(_bookinfo_api).content)
+  File "/usr/lib/python2.7/json/__init__.py", line 338, in loads
+    return _default_decoder.decode(s)
+  File "/usr/lib/python2.7/json/decoder.py", line 366, in decode
+    obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+  File "/usr/lib/python2.7/json/decoder.py", line 382, in raw_decode
+    obj, end = self.scan_once(s, idx)
+ValueError: Invalid control character at: line 3 column 244 (char 297)
+2016-07-20 19:01:54,899 - app.origin - INFO - 已写入【001】车咚
+2016-07-20 19:01:54,934 - app.origin - INFO - 已写入【002】五万块，足够
+2016-07-20 19:01:54,976 - app.origin - INFO - 已写入【003】他说想她，这种鬼话她也信？
+2016-07-20 19:01:55,021 - app.origin - INFO - 已写入【004】一个两个都这样对待她
+2016-07-20 19:01:55,081 - app.origin - INFO - 已写入【005】三年了，还忘不了？
+2016-07-20 19:01:55,122 - app.origin - INFO - 已写入【006】别人的青梅都是柔情似水
+2016-07-20 19:01:55,162 - app.origin - INFO - 已写入【007】她到了如今还爱着他？
+2016-07-20 19:01:55,206 - app.origin - INFO - 已写入【008】不会肤浅的栽倒在他这副好皮囊里
+2016-07-20 19:01:55,244 - app.origin - INFO - 已写入【009】宋公子定然是女人们趋之若鹜追求的对象
+2016-07-20 19:01:55,287 - app.origin - INFO - 已写入【010】卑劣的不愿意放手
+2016-07-20 19:01:55,334 - app.origin - INFO - 已写入【011】想吃回头草，没门！
+2016-07-20 19:01:55,392 - app.origin - INFO - 已写入【012】难道在她的心里宋子琰就是比他强？
+2016-07-20 19:01:55,440 - app.origin - INFO - 已写入【013】不觉得欠他一个解释？
+2016-07-20 19:01:55,485 - app.origin - INFO - 已写入【014】铂金戒指
+2016-07-20 19:01:55,518 - app.origin - INFO - 已写入【015】水手服挺适合她
+2016-07-20 19:01:55,550 - app.origin - INFO - 已写入【016】假面王子出现了
+2016-07-20 19:01:55,605 - app.origin - INFO - 已写入【017】官配CP
+2016-07-20 19:01:55,648 - app.origin - INFO - 已写入【018】不会在原地一直等他
+2016-07-20 19:01:55,691 - app.origin - INFO - 已写入【019】一碰她就犯恶心
+2016-07-20 19:01:55,732 - app.origin - INFO - 已写入【020】三天后，聂诗回国
+2016-07-20 19:01:55,771 - app.origin - INFO - 已写入【021】没应酬也不见得他多想回这个家
+2016-07-20 19:01:55,812 - app.origin - INFO - 已写入【022】人不可能永远都那么好运
+2016-07-20 19:01:55,848 - app.origin - INFO - 已写入【023】人间极品
+2016-07-20 19:01:55,881 - app.origin - INFO - 已写入【024】追求她的男人可以从这里排到法国
+2016-07-20 19:01:55,933 - app.origin - INFO - 已写入【025】大叔都是配小萝莉
+2016-07-20 19:01:55,974 - app.origin - INFO - 已写入【026】一个女人太拼的话一点都不可爱
+2016-07-20 19:01:56,012 - app.origin - INFO - 已写入【027】从头到尾放不下过去的人只有她
+2016-07-20 19:01:56,054 - app.origin - INFO - 已写入【028】但凡你这个年纪的女生都应该拥有一颗少女心
+2016-07-20 19:01:56,099 - app.origin - INFO - 已写入【029】早几年前的时候，你怎么不让我自重
+2016-07-20 19:01:56,146 - app.origin - INFO - 已写入【030】怎么？害羞了？
+2016-07-20 19:01:56,191 - app.origin - INFO - 已写入【031】她在赌那个女人在他心目中的地位
+2016-07-20 19:01:56,225 - app.origin - INFO - 已写入【032】收拾她，刻不容缓
+2016-07-20 19:01:56,264 - app.origin - INFO - 已写入【033】永远都不要试图远离他
+2016-07-20 19:01:56,304 - app.origin - INFO - 已写入【034】“precious”珠宝公司，闻名全球只此一家
+2016-07-20 19:01:56,346 - app.origin - INFO - 已写入【035】说不定他们早就勾搭在一起了
+2016-07-20 19:01:56,385 - app.origin - INFO - 已写入【036】你就只会这点不入流的伎俩
+2016-07-20 19:01:56,430 - app.origin - INFO - 已写入【037】是她吧？你手机里的照片
+2016-07-20 19:01:56,478 - app.origin - INFO - 已写入【038】从天而降的学长
+2016-07-20 19:01:56,523 - app.origin - INFO - 已写入【039】彼此的舞伴
+2016-07-20 19:01:56,569 - app.origin - INFO - 已写入【040】我不介意用我的方式堵住你的嘴
+2016-07-20 19:01:56,609 - app.origin - INFO - 已写入【041】他也不是吃素的主
+2016-07-20 19:01:56,650 - app.origin - INFO - 已写入【042】你这么快就看上我们学长了？
+2016-07-20 19:01:56,689 - app.origin - INFO - 已写入【043】想必她和大哥关系匪浅
+2016-07-20 19:01:56,728 - app.origin - INFO - 已写入【044】你要养我吗？我求之不得
+2016-07-20 19:01:56,767 - app.origin - INFO - 已写入【045】韩式泳衣遮肚皮
+2016-07-20 19:01:56,807 - app.origin - INFO - 已写入【046】人工呼吸，他不行
+2016-07-20 19:01:56,850 - app.origin - INFO - 已写入【047】琰哥哥，知道我找你有多辛苦？
+2016-07-20 19:01:56,887 - app.origin - INFO - 已写入【048】为了他，心甘情愿放弃更好的前途
+2016-07-20 19:01:56,933 - app.origin - INFO - 已写入【049】胆儿肥，偷酒喝，还是82年拉菲
+2016-07-20 19:01:56,992 - app.origin - INFO - 已写入【050】陪笑不够，还要陪酒
+2016-07-20 19:01:57,039 - app.origin - INFO - 已写入【051】从他的眼里看出了对她的兴趣
+2016-07-20 19:01:57,089 - app.origin - INFO - 已写入【052】他会如此肤浅，只看女人外表？
+2016-07-20 19:01:57,130 - app.origin - INFO - 已写入【053】女人都是口是心非的动物
+2016-07-20 19:01:57,169 - app.origin - INFO - 已写入【054】还没有他碰不了的女人
+2016-07-20 19:01:57,210 - app.origin - INFO - 已写入【055】抓他来当挡箭牌
+2016-07-20 19:01:57,243 - app.origin - INFO - 已写入【056】吻戏都拍过了，还装纯呢！
+2016-07-20 19:01:57,282 - app.origin - INFO - 已写入【057】做不成恋人，至少还是朋友
+2016-07-20 19:01:57,319 - app.origin - INFO - 已写入【058】你愿意永远跟廖奚在一起吗？
+2016-07-20 19:01:57,362 - app.origin - INFO - 已写入【059】甩掉宋子琰，我比他更解风情
+2016-07-20 19:01:57,407 - app.origin - INFO - 已写入【060】安排了一门相亲
+2016-07-20 19:01:57,513 - app.origin - INFO - 已写入【061】渐渐疏离，比陌生人还不如
+2016-07-20 19:01:57,603 - app.origin - INFO - 已写入【062】会给她找个名当户对的丈夫
+2016-07-20 19:01:57,666 - app.origin - INFO - 已写入【063】小丫头，我们还是挺有缘分
+2016-07-20 19:01:57,714 - app.origin - INFO - 已写入【064】天价翡翠镯子
+2016-07-20 19:01:57,753 - app.origin - INFO - 已写入【065】搞砸相亲，有你好看
+2016-07-20 19:01:57,809 - app.origin - INFO - 已写入【066】小太妹，烟熏妆
+2016-07-20 19:01:57,849 - app.origin - INFO - 已写入【067】奥斯卡影后水平
+2016-07-20 19:01:57,892 - app.origin - INFO - 已写入【068】居家好男人
+2016-07-20 19:01:57,960 - app.origin - INFO - 已写入【069】谁嫁给他才是有福气
+2016-07-20 19:01:57,997 - app.origin - INFO - 已写入【070】喝酒也要分人？
+2016-07-20 19:01:58,035 - app.origin - INFO - 已写入【071】大坏蛋，为什么不要我？
+2016-07-20 19:01:58,081 - app.origin - INFO - 已写入【072】从来没有见过像你这么蠢的女人
+2016-07-20 19:01:58,113 - app.origin - INFO - 已写入【073】无家可归的她
+2016-07-20 20:55:50,081 - app.origin - INFO - 起点中文网未找到包含关键字"总裁的掌中宝妻"的小说
+2016-07-20 20:55:55,097 - app.origin - INFO - 正在获取"宠婚甜蜜蜜，总裁的掌中宝妻"书籍信息
+2016-07-20 20:55:55,184 - app.origin - INFO - 已写入【001】已婚少妇苏沁宝
+2016-07-20 20:55:55,225 - app.origin - INFO - 已写入【002】我老公是个富可敌国的大人物
+2016-07-20 20:55:55,269 - app.origin - INFO - 已写入【003】很好，苏沁宝，你要造反？
+2016-07-20 20:55:57,631 - app.origin - INFO - 已写入【004】你姐姐订婚的好日子，别哭丧着脸
+2016-07-20 20:55:57,664 - app.origin - INFO - 已写入【005】气场威严的骑士先生，从天而降
+2016-07-20 20:55:57,708 - app.origin - INFO - 已写入【006】第一次有人这样护着她
+2016-07-20 20:55:57,739 - app.origin - INFO - 已写入【007】猫咪一样的小家伙脸蛋烧得通红
+2016-07-20 20:55:57,772 - app.origin - INFO - 已写入【008】小东西，谁派你来的？
+2016-07-20 20:55:57,809 - app.origin - INFO - 已写入【009】那晚……你也叫我叔叔
+2016-07-20 20:55:57,852 - app.origin - INFO - 已写入【010】男人气息迫近，目光灼灼：就这么怕我？
+2016-07-20 20:55:57,903 - app.origin - INFO - 已写入【011】薄先生说，太太的开支无上限
+2016-07-20 20:55:57,943 - app.origin - INFO - 已写入【012】仿佛关心小女孩的温柔叔叔
+2016-07-20 20:55:57,989 - app.origin - INFO - 已写入【013】所以，是你命令苏沁宝去买咖啡？
+2016-07-20 20:55:58,036 - app.origin - INFO - 已写入【014】越先生为她撑腰？这小实习生的后台……
+2016-07-20 20:55:58,080 - app.origin - INFO - 已写入【015】再犯，叔叔要罚你
+2016-07-20 20:55:58,125 - app.origin - INFO - 已写入【016】你老公薄先生面儿都没露过，你竟然怀孕了？！
+2016-07-20 20:55:58,165 - app.origin - INFO - 已写入【017】叔叔，我怀孕了，你是孩子的爸爸！
+2016-07-20 20:55:58,207 - app.origin - INFO - 已写入【018】沁宝，告诉叔叔，你为什么觉得自己怀孕了？
+2016-07-20 20:55:58,245 - app.origin - INFO - 已写入【019】我们小沁宝吓坏了，叔叔以后都不骗你了
+2016-07-20 20:55:58,290 - app.origin - INFO - 已写入【020】叔叔你就行行好，人家请不起太贵的
+2016-07-20 20:55:58,329 - app.origin - INFO - 已写入【021】沁宝软绵绵地撒娇：我会被打手心的……
+2016-07-20 20:55:58,364 - app.origin - INFO - 已写入【022】我是有夫之妇！你这样……是不对的！
+2016-07-20 20:55:58,404 - app.origin - INFO - 已写入【023】沁宝蹬着腿：你放开我！朋友妻、不可欺！
+2016-07-20 20:55:58,445 - app.origin - INFO - 已写入【024】我以为你是故意露给我看的
+2016-07-20 20:55:58,484 - app.origin - INFO - 已写入【025】今后，我只是你的老板，私下毫无交集
+2016-07-20 20:55:58,533 - app.origin - INFO - 已写入【026】只听男人轻哼一声，低笑，“这谁啊？”
+2016-07-20 20:55:58,586 - app.origin - INFO - 已写入【027】越叔叔别赶我走！我们差点就……你得保护我！
+2016-07-20 20:55:58,618 - app.origin - INFO - 已写入【028】只怕自己再说错一句半句，越粲真的会拎起她丢出门外
+2016-07-20 20:55:58,655 - app.origin - INFO - 已写入【029】苏沁宝，叔叔现在给你上堂课
+2016-07-20 20:55:58,695 - app.origin - INFO - 已写入【030】帝王般的男人，揽着他受了惊的小媳妇儿
+2016-07-20 20:55:58,733 - app.origin - INFO - 已写入【031】越先生的养成之路，路漫漫其修远兮
+2016-07-20 20:55:58,778 - app.origin - INFO - 已写入【032】他嗤笑：几千万，你请我吃钻石么？
+2016-07-20 20:55:58,817 - app.origin - INFO - 已写入【033】苏沁宝，你觉得我应该怎么罚你？
+2016-07-20 20:55:58,855 - app.origin - INFO - 已写入【034】女孩贝齿咬着唇瓣，“越先生，我有个不情之请……”
+2016-07-20 20:55:58,889 - app.origin - INFO - 已写入【035】连我爸爸都没有打过我，你凭什么，混蛋！
+2016-07-20 20:55:58,926 - app.origin - INFO - 已写入【036】你仗着权势和金钱，肆意折辱我这个父母双亡的小女孩
+2016-07-20 20:55:58,965 - app.origin - INFO - 已写入【037】她是贱人生的野种
+2016-07-20 20:55:59,001 - app.origin - INFO - 已写入【038】和你家大boss闹别扭惹？
+2016-07-20 20:55:59,039 - app.origin - INFO - 已写入【039】总有给薄悦生戴了顶隐形绿帽子的感觉
+2016-07-20 20:55:59,077 - app.origin - INFO - 已写入【040】叔叔错了，叔叔不知道我们沁宝这么怕疼……
+2016-07-20 20:55:59,116 - app.origin - INFO - 已写入【041】泪哒哒的小东西，湿湿软软，真要命！
+2016-07-20 20:55:59,152 - app.origin - INFO - 已写入【042】靳伯受惊了，先生怀里竟抱着熟睡的太太
+2016-07-20 20:55:59,188 - app.origin - INFO - 已写入【043】她居然耍酒疯的时候打给薄悦生！
+2016-07-20 20:55:59,224 - app.origin - INFO - 已写入【044】先生说，再发现您酗酒……关禁闭两个月
+2016-07-20 20:55:59,257 - app.origin - INFO - 已写入【045】我借你五千万，到四季酒店找我
+2016-07-20 20:55:59,294 - app.origin - INFO - 已写入【046】谢大少的条件是什么，陪二位玩三人行？
+2016-07-20 20:55:59,334 - app.origin - INFO - 已写入【047】那是薄悦生的心头好，他动怒了可怎么办
+2016-07-20 20:55:59,370 - app.origin - INFO - 已写入【048】薄氏全球通master，这张是薄先生的副卡！
+2016-07-20 20:55:59,406 - app.origin - INFO - 已写入【049】给我砸！
+2016-07-20 20:55:59,448 - app.origin - INFO - 已写入【050】五千万，陪叔叔一晚，叔叔给你
+2016-07-20 20:55:59,485 - app.origin - INFO - 已写入【051】才，才没有呢！我为什么要喜，喜欢你……
+2016-07-20 20:55:59,529 - app.origin - INFO - 已写入【052】越叔叔，求你不要这样弄我！
+2016-07-20 20:55:59,569 - app.origin - INFO - 已写入【053】娇憨地嘟着唇，哼哼唧唧像只小猪似的
+2016-07-20 20:55:59,607 - app.origin - INFO - 已写入【054】城府极深的猎人，诱哄着他的小兽兽
+2016-07-20 20:55:59,644 - app.origin - INFO - 已写入【055】哥哥，我错了，我再也不敢了……
+2016-07-20 20:55:59,678 - app.origin - INFO - 已写入【056】我是有夫之妇，有夫之妇你懂嘛！
+2016-07-20 20:55:59,715 - app.origin - INFO - 已写入【057】小实习生跪在大老板身前，起起伏伏……
+2016-07-20 20:55:59,774 - app.origin - INFO - 已写入【058】您别动气，苏小姐还小，小姑娘都爱惜头发
+2016-07-20 20:55:59,809 - app.origin - INFO - 已写入【059】沁宝，你好好看着，什么叫——强迫你！
+2016-07-20 20:55:59,845 - app.origin - INFO - 已写入【060】我恨你，越粲，你根本不配我喜欢你
+2016-07-20 20:55:59,884 - app.origin - INFO - 已写入【061】究竟还要等多久，我才能给爸爸报仇
+2016-07-20 20:55:59,936 - app.origin - INFO - 已写入【062】沁宝惊悚地瞪大眼睛，仿佛盯着一只庞大的怪兽
+2016-07-20 20:55:59,974 - app.origin - INFO - 已写入【063】女孩颤抖着小手，攥紧离婚协议书……
+2016-07-20 20:56:00,020 - app.origin - INFO - 已写入【064】我的小太太，军婚，你想怎么离？
