@@ -31,7 +31,7 @@ def send_email(to, subject, template, **kwargs):
 
 def sendto_kindle(to, bookname):
     #搞一个局部的app。
-    app = create_app('default')
+    app = create_app('production')
     msg = Message(app.config['FANCLLEY_MAIL_SUBJECT_PREFIX']+ ' ' + u'Your book coming!',
                   sender=app.config['FANCLLEY_MAIL_SENDER'], recipients=[to])
     msg.body = "fanclley"

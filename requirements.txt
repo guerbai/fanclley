@@ -8,4 +8,5 @@ flask-script==0.6.6
 flask-wtf==0.9.4
 itsdangerous==0.23
 celery==3.1.23
-
+requests==2.5.0
+bs4==0.0.1
