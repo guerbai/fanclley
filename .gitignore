@@ -1,7 +1,6 @@
 *.pyc
 .idea/
 test.py
-*.log
 migrations/
 app/data/mobiworkshop/
 *.sqlite

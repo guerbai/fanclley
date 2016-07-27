@@ -1,0 +1,112 @@
+2016-07-27 20:26:20,941 - app.origin - ERROR - 无法连接http://search.zongheng.com/search/all/茗/1.html,
+无法获取纵横搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 108, in search_zongheng
+    soup = BeautifulSoup(res, 'lxml')
+  File "/home/fyb/te/local/lib/python2.7/site-packages/bs4/__init__.py", line 165, in __init__
+    % ",".join(features))
+FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+2016-07-27 20:26:42,693 - app.origin - ERROR - 无法连接http://search.zongheng.com/search/all/茗/1.html,
+无法获取纵横搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 108, in search_zongheng
+    soup = BeautifulSoup(res, 'lxml')
+  File "/home/fyb/te/local/lib/python2.7/site-packages/bs4/__init__.py", line 165, in __init__
+    % ",".join(features))
+FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+2016-07-27 20:26:50,042 - app.origin - INFO - 茗雪谣12免费章节
+2016-07-27 20:26:50,172 - app.origin - INFO - 已写入番外1
+2016-07-27 20:26:50,336 - app.origin - INFO - 已写入第一章 东茗
+2016-07-27 20:26:50,415 - app.origin - INFO - 已写入第一章 第三节（下）
+2016-07-27 20:26:50,501 - app.origin - INFO - 已写入第一章 第四节 入室弟子（上）
+2016-07-27 20:26:50,604 - app.origin - INFO - 已写入第一章 第四节 入室弟子（下）
+2016-07-27 20:26:50,868 - app.origin - INFO - 已写入第一章 第五节 东茗茶符
+2016-07-27 20:26:50,963 - app.origin - INFO - 已写入第一章 第六节 朱罗符咒
+2016-07-27 20:26:52,250 - app.origin - INFO - 已写入第二章 祥云大会 第一节 若火祥云
+2016-07-27 20:26:52,360 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐 （上）
+2016-07-27 20:26:52,466 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐（下）
+2016-07-27 20:26:52,583 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台(一）
+2016-07-27 20:26:53,210 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台（二）
+2016-07-27 20:27:51,308 - app.origin - ERROR - 无法连接http://search.zongheng.com/search/all/茗/1.html,
+无法获取纵横搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 108, in search_zongheng
+    soup = BeautifulSoup(res, 'lxml')
+  File "/home/fyb/te/local/lib/python2.7/site-packages/bs4/__init__.py", line 165, in __init__
+    % ",".join(features))
+FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+2016-07-27 20:27:53,972 - app.origin - INFO - 茗雪谣12免费章节
+2016-07-27 20:27:54,067 - app.origin - INFO - 已写入番外1
+2016-07-27 20:27:54,166 - app.origin - INFO - 已写入第一章 东茗
+2016-07-27 20:27:54,254 - app.origin - INFO - 已写入第一章 第三节（下）
+2016-07-27 20:27:54,333 - app.origin - INFO - 已写入第一章 第四节 入室弟子（上）
+2016-07-27 20:27:54,424 - app.origin - INFO - 已写入第一章 第四节 入室弟子（下）
+2016-07-27 20:27:54,510 - app.origin - INFO - 已写入第一章 第五节 东茗茶符
+2016-07-27 20:27:54,614 - app.origin - INFO - 已写入第一章 第六节 朱罗符咒
+2016-07-27 20:27:54,700 - app.origin - INFO - 已写入第二章 祥云大会 第一节 若火祥云
+2016-07-27 20:27:54,804 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐 （上）
+2016-07-27 20:27:54,890 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐（下）
+2016-07-27 20:27:54,981 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台(一）
+2016-07-27 20:27:55,078 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台（二）
+2016-07-27 20:34:31,464 - app.origin - ERROR - 无法连接http://search.zongheng.com/search/all/茗/1.html,
+无法获取纵横搜索结果。
+Traceback (most recent call last):
+  File "/home/fyb/codes/fanclley/app/origins/search.py", line 108, in search_zongheng
+    soup = BeautifulSoup(res, 'lxml')
+  File "/home/fyb/te/local/lib/python2.7/site-packages/bs4/__init__.py", line 165, in __init__
+    % ",".join(features))
+FeatureNotFound: Couldn't find a tree builder with the features you requested: lxml. Do you need to install a parser library?
+2016-07-27 20:34:34,502 - app.origin - INFO - 茗雪谣12免费章节
+2016-07-27 20:34:37,604 - app.origin - INFO - 已写入番外1
+2016-07-27 20:34:37,806 - app.origin - INFO - 已写入第一章 东茗
+2016-07-27 20:34:37,899 - app.origin - INFO - 已写入第一章 第三节（下）
+2016-07-27 20:34:37,991 - app.origin - INFO - 已写入第一章 第四节 入室弟子（上）
+2016-07-27 20:34:38,087 - app.origin - INFO - 已写入第一章 第四节 入室弟子（下）
+2016-07-27 20:34:38,189 - app.origin - INFO - 已写入第一章 第五节 东茗茶符
+2016-07-27 20:34:38,302 - app.origin - INFO - 已写入第一章 第六节 朱罗符咒
+2016-07-27 20:34:38,390 - app.origin - INFO - 已写入第二章 祥云大会 第一节 若火祥云
+2016-07-27 20:34:38,547 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐 （上）
+2016-07-27 20:34:38,643 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐（下）
+2016-07-27 20:34:38,734 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台(一）
+2016-07-27 20:34:38,866 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台（二）
+2016-07-27 20:36:11,148 - app.origin - INFO - 茗雪谣12免费章节
+2016-07-27 20:36:11,175 - app.origin - INFO - 已写入番外1
+2016-07-27 20:36:11,205 - app.origin - INFO - 已写入第一章 东茗
+2016-07-27 20:36:11,224 - app.origin - INFO - 已写入第一章 第三节（下）
+2016-07-27 20:36:11,240 - app.origin - INFO - 已写入第一章 第四节 入室弟子（上）
+2016-07-27 20:36:11,259 - app.origin - INFO - 已写入第一章 第四节 入室弟子（下）
+2016-07-27 20:36:11,275 - app.origin - INFO - 已写入第一章 第五节 东茗茶符
+2016-07-27 20:36:11,295 - app.origin - INFO - 已写入第一章 第六节 朱罗符咒
+2016-07-27 20:36:11,319 - app.origin - INFO - 已写入第二章 祥云大会 第一节 若火祥云
+2016-07-27 20:36:11,336 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐 （上）
+2016-07-27 20:36:11,355 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐（下）
+2016-07-27 20:36:11,374 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台(一）
+2016-07-27 20:36:11,391 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台（二）
+2016-07-27 20:38:33,643 - app.origin - INFO - 已获取"醉红颜"书籍信息
+2016-07-27 20:38:33,758 - app.origin - INFO - 已写入穿越
+2016-07-27 20:38:33,848 - app.origin - INFO - 已写入初次了解
+2016-07-27 20:38:33,946 - app.origin - INFO - 已写入惊喜
+2016-07-27 20:38:34,046 - app.origin - INFO - 已写入合作
+2016-07-27 20:38:34,118 - app.origin - INFO - 已写入说亲
+2016-07-27 20:38:34,197 - app.origin - INFO - 已写入争吵
+2016-07-27 20:38:34,291 - app.origin - INFO - 已写入见面
+2016-07-27 20:38:34,372 - app.origin - INFO - 已写入定亲
+2016-07-27 20:38:34,436 - app.origin - INFO - 已写入出嫁
+2016-07-27 20:38:34,491 - app.origin - INFO - 已写入回门
+2016-07-27 20:38:34,563 - app.origin - INFO - 已写入过年
+2016-07-27 20:38:34,622 - app.origin - INFO - 已写入拜年
+2016-07-27 20:38:34,686 - app.origin - INFO - 已写入相遇
+2016-07-27 20:38:34,744 - app.origin - INFO - 已写入约定
+2016-07-27 20:38:52,241 - app.origin - INFO - 茗雪谣12免费章节
+2016-07-27 20:38:52,339 - app.origin - INFO - 已写入番外1
+2016-07-27 20:38:52,456 - app.origin - INFO - 已写入第一章 东茗
+2016-07-27 20:38:53,849 - app.origin - INFO - 已写入第一章 第三节（下）
+2016-07-27 20:38:53,942 - app.origin - INFO - 已写入第一章 第四节 入室弟子（上）
+2016-07-27 20:38:54,057 - app.origin - INFO - 已写入第一章 第四节 入室弟子（下）
+2016-07-27 20:38:54,142 - app.origin - INFO - 已写入第一章 第五节 东茗茶符
+2016-07-27 20:38:54,235 - app.origin - INFO - 已写入第一章 第六节 朱罗符咒
+2016-07-27 20:38:54,328 - app.origin - INFO - 已写入第二章 祥云大会 第一节 若火祥云
+2016-07-27 20:38:54,426 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐 （上）
+2016-07-27 20:38:54,507 - app.origin - INFO - 已写入第二章 祥云大会 第二节 赤隐（下）
+2016-07-27 20:38:54,595 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台(一）
+2016-07-27 20:38:54,846 - app.origin - INFO - 已写入第二章 祥云大会 第三节 仙女台（二）
