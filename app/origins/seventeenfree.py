@@ -65,7 +65,8 @@ class Seventeenfree:
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')
             for i in range(self.freechap_num):
                 file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
-                orilogger.info(u'已写入' + self._chap_list[i][0])
+            orilogger.info(u'已生成\"' + self.bookname + u'\".txt')
+            file.close()
 
         except:
             orilogger.exception(u'从17K生成\"' + self.bookname + u'\.txt"失败')
