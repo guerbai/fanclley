@@ -31,6 +31,7 @@ def hardtask(kindle_loc,origin,bookid,bookname):
     subprocess.call('%skindlegen %s%s.epub'%(workdir,workdir,bname),shell=True)
     subprocess.call('rm %s%s.epub'%(workdir,bname),shell=True)
     sendto_kindle(kindle_loc,bname)
+    #subprocess.call('rm %s%s.mobi'%(workdir,bname),shell=True)
 
     return {'status': 'Task completed!'}
 

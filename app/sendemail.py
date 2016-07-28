@@ -28,7 +28,7 @@ def send_email(to, subject, template, **kwargs):
     thr.start()
     return thr
 
-
+#@celery.task
 def sendto_kindle(to, bookname):
     #搞一个局部的app。
     app = create_app('production')
@@ -37,7 +37,7 @@ def sendto_kindle(to, bookname):
     msg.body = u"fanclley"
     msg.html = u"<b>Fanclley provide this service for you!</b>"
     with app.open_resource(u"data/mobiworkshop/" + bookname + u'.mobi') as fp:
-        msg.attach(u'fanclley' + unicode(time.strftime("%Y-%m-%d", time.localtime())) + u'.mobi', "*/*", fp.read())
+        msg.attach(u'fanclley.mobi', "*/*", fp.read())
     #mail.send()
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
