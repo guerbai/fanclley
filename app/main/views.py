@@ -50,7 +50,7 @@ def edit_profile():
         # current_user.hongxiu_login = form.hongxiu_login.data
         # current_user.hongxiu_password = form.hongxiu_password.data
         db.session.add(current_user)
-        #db.session.commit()
+        db.session.commit()
         flash(u'你的信息已更新.')
         return redirect(url_for('.index'))
     form.kindle_loc.data = current_user.kindle_loc
@@ -72,6 +72,7 @@ def letschat():
                           message = form.message.data)
 
         db.session.add(message)
+        db.session.commit()
         return redirect(url_for('.letschat'))
     return render_template('letschat.html',messages = messages,form = form)
 

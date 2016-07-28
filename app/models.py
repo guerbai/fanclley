@@ -1,3 +1,4 @@
+# -*- coding:utf-8 -*-
 from datetime import datetime
 from werkzeug.security import generate_password_hash, check_password_hash
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
@@ -53,6 +54,8 @@ class User(UserMixin, db.Model):
             return False
         self.confirmed = True
         db.session.add(self)
+        #使用gunicorn后必须加上这一行，不然认证不了。
+        db.session.commit()
         return True
 
     def generate_reset_token(self, expiration=3600):
