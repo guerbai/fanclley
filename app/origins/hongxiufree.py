@@ -66,7 +66,7 @@ class HongxiuFree:
 
     def generate_txt(self):
         try:
-            file = open(r'app/data/mobiworkshop/' + u'红袖'+'_'+self.bookname + '.txt', 'w')
+            file = open(r'app/data/mobiworkshop/' + u'红袖'+u'_'+self.bookname + '.txt', 'w')
             file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             for i in range(self.freechap_num):
                 file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')

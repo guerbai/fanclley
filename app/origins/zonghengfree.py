@@ -5,6 +5,7 @@ from ..loggers  import orilogger
 from antianti import USER_AGENTS,PROXIES
 import random
 import sys
+import html
 from bs4 import BeautifulSoup
 reload(sys)
 sys.setdefaultencoding("utf-8")
@@ -32,7 +33,7 @@ class Zonghengfree:
         url = 'http://book.zongheng.com/showchapter/'+self.bookid+'.html'
         try:
             res = self.s.get(url,proxies=random.choice(PROXIES)).text
-            soup = BeautifulSoup(res, 'lxml')
+            soup = BeautifulSoup(res, 'html.parser')
             test = soup.find('div',class_='tc txt')
             if test:
                 self.authorname = soup.find('div', class_='tc txt').find('a').text
@@ -65,7 +66,7 @@ class Zonghengfree:
         _novel = u''
         try:
             res = self.s.get(url,proxies=random.choice(PROXIES)).content
-            soup = BeautifulSoup(res, 'lxml')
+            soup = BeautifulSoup(res, 'html.parser')
             wrap = soup.find('div', class_='content')
             if wrap:
                 buffer = wrap.find_all('p')
@@ -84,7 +85,7 @@ class Zonghengfree:
             return ''
 
     def generate_txt(self):
-        file = open(r'app/data/mobiworkshop/' + u'纵横' + '_' + self.bookname + '.txt', 'w')
+        file = open(r'app/data/mobiworkshop/' + u'纵横'+u'_' + self.bookname + '.txt', 'w')
         try:
             file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')

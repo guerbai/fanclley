@@ -4,6 +4,7 @@ import requests,json
 from ..loggers import orilogger
 from .basebook import Basebook
 from bs4 import BeautifulSoup
+import html
 from antianti import USER_AGENTS,PROXIES
 import random
 import sys
@@ -105,7 +106,7 @@ class Search:
         myres = []
         try:
             res = self.s.get(url,proxies=random.choice(PROXIES)).text
-            soup = BeautifulSoup(res, 'lxml')
+            soup = BeautifulSoup(res, 'html.parser')
             div = soup.find_all('div', class_='search_text')
             if len(div) > 5:
                 div = div[:5]
