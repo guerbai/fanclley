@@ -15,8 +15,8 @@ class Config:
     MAIL_SERVER = 'smtp.163.com'
     MAIL_PORT = 25
     MAIL_USE_TLS = True
-    MAIL_USERNAME = 'fanclley@163.com'  # os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = 'L501826'  # os.environ.get('MAIL_PASSWORD')
+    MAIL_USERNAME = 'fanclley@163.com'#os.environ.get('MAIL_USERNAME')
+    MAIL_PASSWORD = 'L501826'#os.environ.get('MAIL_PASSWORD')
     MAIL_ASCII_ATTACHMENTS = True
     FANCLLEY_MAIL_SUBJECT_PREFIX = '[Fanclley]'
     FANCLLEY_MAIL_SENDER = 'Fanclley Admin <fanclley@163.com>'
