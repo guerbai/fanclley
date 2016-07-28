@@ -70,7 +70,7 @@ class HongxiuFree:
             file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             for i in range(self.freechap_num):
                 file.write('# '+self._chap_list[i][0] + '\n\n' + self.get_singel_novel(self._chap_list[i][1]) + '\n\n')
-                orilogger.info(u'已写入' + self._chap_list[i][0])
+            orilogger.info(u'已生成\"' + self.bookname + u'\".txt')
             file.close()
         except:
             orilogger.exception(u'从红袖添香网生成txt电子书失败！')
