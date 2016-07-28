@@ -36,8 +36,8 @@ def sendto_kindle(to, bookname):
                   sender=app.config['FANCLLEY_MAIL_SENDER'], recipients=[to])
     msg.body = u"fanclley"
     msg.html = u"<b>Fanclley provide this service for you!</b>"
-    with app.open_resource(u"data/mobiworkshop/" + bookname + '.mobi') as fp:
-        msg.attach('fanclley' + time.strftime("%Y-%m-%d", time.localtime()) + '.mobi', "*/*", fp.read())
+    with app.open_resource(u"data/mobiworkshop/" + bookname + u'.mobi') as fp:
+        msg.attach(u'fanclley' + unicode(time.strftime("%Y-%m-%d", time.localtime())) + u'.mobi', "*/*", fp.read())
     #mail.send()
     thr = Thread(target=send_async_email, args=[app, msg])
     thr.start()
