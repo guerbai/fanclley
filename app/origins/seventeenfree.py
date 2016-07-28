@@ -59,7 +59,7 @@ class Seventeenfree:
             return ''
 
     def generate_txt(self):
-        file = open(r'app/data/mobiworkshop/' + u'17K' + '_' + self.bookname + '.txt', 'w')
+        file = open(r'app/data/mobiworkshop/' + u'17K' + u'_' + self.bookname + '.txt', 'w')
         try:
             file.write(r'% '+self.bookname+'\n'+r'% '+u'作者： '+self.authorname+'\n'+r'% '+u'\n由fanclley推送。'+'\n\n')
             orilogger.info(self.bookname + str(self.freechap_num) + u'免费章节')
