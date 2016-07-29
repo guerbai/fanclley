@@ -1,9 +1,9 @@
 *.pyc
 .idea/
 test.py
-migrations/
 app/data/mobiworkshop/
 *.sqlite
 *.py~
 *.txt~
 .gitignore~
+*.log
