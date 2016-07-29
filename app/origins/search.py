@@ -4,6 +4,7 @@ import requests,json
 from ..loggers import orilogger
 from .basebook import Basebook
 from bs4 import BeautifulSoup
+import re
 import html
 from antianti import USER_AGENTS,PROXIES
 import random
@@ -71,6 +72,22 @@ class Search:
                 abook.raw_url = 'http://novel.hongxiu.com/a/'+str(info['bid'])+'/'
                 myres.append(abook)
             self.res_list+=myres
+            if myres == []:
+                orilogger.info(u'红袖添香未找到包含关键字\"' + self.keyword + u'\"的小说')
+            return myres
+        except ValueError:
+            pattern = re.compile(r'bid":"(.*?)".*?title":"(.*?)"')
+            res = self.s.get(_searchapi).content
+            items = re.findall(pattern,res)
+            for item in items:
+                abook = Basebook()
+                abook.origin = u'红袖'
+                abook.bookname = item[1]
+                abook.bookid = str(item[0])
+                # abook.bookstatus = info['bookstatus']
+                abook.raw_url = 'http://novel.hongxiu.com/a/' + str(abook.bookid) + '/'
+                myres.append(abook)
+            self.res_list += myres
             if myres == []:
                 orilogger.info(u'红袖添香未找到包含关键字\"' + self.keyword + u'\"的小说')
             return myres
