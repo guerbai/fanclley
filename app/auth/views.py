@@ -21,8 +21,6 @@ def before_request():
 
 @auth.route('/unconfirmed')
 def unconfirmed():
-    print current_user.confirmed
-    print request.endpoint
     if current_user.confirmed:
         return redirect(url_for('main.index'))
     return render_template('auth/unconfirmed.html')
@@ -72,7 +70,6 @@ def confirm(token):
         return redirect(url_for('main.index'))
     if current_user.confirm(token):
         flash(u'你的帐户已确认.')
-        print 'in confirm token'
     else:
         flash(u'确认链接已失效.')
     return redirect(url_for('main.index'))
