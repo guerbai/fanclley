@@ -33,6 +33,7 @@ class QidianFree:
 
     def get_info(self):
         _chaplist_api = 'http://4g.if.qidian.com/Atom.axd/Api/Book/GetChapterList?BookId='+self.bookid
+        self._chap_list = []
         try:
             _chapdict = json.loads(self.s.get(_chaplist_api,proxies=random.choice(PROXIES)).content)
             self.authorname = _chapdict['Data']['Author']
@@ -57,7 +58,7 @@ class QidianFree:
             #     realnovel += '    '+i+u'     \n'
             return realnovel
         except:
-            orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
+            orilogger.warning(u'无法获取'+_novel_api+u'的章节内容。'+self.bookname)
             return ''
 
     def generate_txt(self):

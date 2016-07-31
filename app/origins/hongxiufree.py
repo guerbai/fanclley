@@ -43,6 +43,7 @@ class HongxiuFree:
 
     def get_chapterlist(self):
         _chaplist_api = 'http://novel.hongxiu.com/AndroidClient140401/book_chapter_list/'+self.bookid+'.json'
+        self._chap_list = []
         try:
             _chapdict = json.loads(self.s.get(_chaplist_api,proxies=random.choice(PROXIES)).content)
             for i in _chapdict['response']:
@@ -61,7 +62,7 @@ class HongxiuFree:
             realnovel = str(_novel).replace(u'\r\n', '    \n')
             return realnovel
         except:
-            orilogger.exception(u'无法获取'+_novel_api+u'的章节内容。')
+            orilogger.warning(u'无法获取'+_novel_api+u'的章节内容。'+self.bookname)
             return ''
 
     def generate_txt(self):

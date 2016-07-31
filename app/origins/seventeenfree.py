@@ -31,6 +31,7 @@ class Seventeenfree:
         _chaplist_api = 'http://client1.17k.com/rest/download/getBookVolumeSimpleListBybid?bookId='+self.bookid\
                         +'&tokenId=aGQxZWo2MkA6MTMxMTcyOTI5MToyMDAxMDY3'
         _info_api = 'http://client1.17k.com/rest/bookintroduction/getBookByid?bookId='+self.bookid
+        self._chap_list = []
         try:
             _infodict = json.loads(self.s.get(_info_api,proxies=random.choice(PROXIES)).content)
             self.authorname = _infodict['book']['authorPenname']
@@ -55,7 +56,7 @@ class Seventeenfree:
             realnovel = str(_novel).replace(u'\r\n', '    \n')
             return realnovel
         except:
-            orilogger.exception(u'无法获取' + _novel_api + u'的章节内容。')
+            orilogger.warning(u'无法获取' + _novel_api + u'的章节内容。'+self.bookname)
             return ''
 
     def generate_txt(self):
