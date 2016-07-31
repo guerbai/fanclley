@@ -31,6 +31,7 @@ class Zonghengfree:
 
     def get_info(self):
         url = 'http://book.zongheng.com/showchapter/'+self.bookid+'.html'
+        self._chap_list = []
         try:
             res = self.s.get(url,proxies=random.choice(PROXIES)).text
             soup = BeautifulSoup(res, 'html.parser')
@@ -81,7 +82,7 @@ class Zonghengfree:
                     _novel += '    ' + i.text.replace(dell,'') + '\r\n'
                 return _novel
         except:
-            orilogger.exception(u'无法获取' + url + u'的章节内容。')
+            orilogger.warning(u'无法获取' + url + u'的章节内容。'+self.bookname)
             return ''
 
     def generate_txt(self):

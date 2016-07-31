@@ -26,9 +26,10 @@ def search_res(keyword=None):
     else:
         return redirect(url_for('.index'))
 
-@main.route('/downloadfree/<origin>/<bookid>/<bookname>')
-def downloadfree(origin,bookid,bookname):
 
+@main.route('/downloadfree/<origin>/<bookid>/<bookname>')
+@login_required
+def downloadfree(origin,bookid,bookname):
     if current_user.kindle_loc == None:
         flash(u'请先填写你的kindle邮箱，并把服务邮箱加入到你的kindle信任邮箱中。')
     else:

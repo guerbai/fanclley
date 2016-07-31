@@ -11,7 +11,14 @@ sys.setdefaultencoding('utf-8')
 workdir = 'app/data/mobiworkshop/'
 @celery.task
 def hardtask(kindle_loc,origin,bookid,bookname):
-
+    if '(' in bookname:
+        bookname = bookname.replace('(','.')
+    if ')' in bookname:
+        bookname = bookname.replace(')', '.')
+    if '（' in bookname:
+        bookname = bookname.replace('（', '.')
+    if '）' in bookname:
+        bookname = bookname.replace('）', '.')
     if origin == u'起点':
         task = QidianFree(bookid,bookname)
     elif origin == u'红袖':
@@ -26,6 +33,7 @@ def hardtask(kindle_loc,origin,bookid,bookname):
     task.generate_txt()
     bname = origin+u'_'+bookname
     #几行命令行指令，生成epub，再生成mobi，然后删除txt和epub文件，最后发送至kindle邮箱。
+
     subprocess.call('pandoc %s%s.txt -o %s%s.epub'%(workdir,bname,workdir,bname),shell=True)
     subprocess.call('rm %s%s.txt'%(workdir,bname),shell=True)
     subprocess.call('%skindlegen %s%s.epub'%(workdir,workdir,bname),shell=True)

@@ -20,6 +20,7 @@ def before_request():
 
 
 @auth.route('/unconfirmed')
+@login_required
 def unconfirmed():
     if current_user.confirmed:
         return redirect(url_for('main.index'))
