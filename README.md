@@ -1,7 +1,7 @@
 # fanclley
 一个以flask为引擎，由celery提供任务队列，部署在腾讯云上的网站。     
 提供由各中文小说网站任意书籍免费部分一键生成mobi电子书发送到个人kindle的服务。    
-网址为：<strong>[http://fanclley.com](http://fanclley.com)</strong>    
+网址为：<strong>[http://115.159.86.190](http://115.159.86.190)</strong>    
 
 一些实现细节在博客上：    
 + [fanclley企划](https://gudabai.github.io/2016/07/14/fanclleyborn/)    
