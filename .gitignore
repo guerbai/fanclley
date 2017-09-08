@@ -1,10 +1,7 @@
+*~
 *.pyc
 .idea/
 test.py
 app/data/mobiworkshop/
 *.sqlite
-*.py~
-*.txt~
-*.md~
-.gitignore~
-*.log
+migrations/
