@@ -2,6 +2,6 @@
 *.pyc
 .idea/
 test.py
-app/data/mobiworkshop/
+mobi_workshop/
 *.sqlite
 migrations/
