@@ -1,69 +1,18 @@
 # -*- coding: utf-8 -*-
-from flask import Flask
-from flask.ext.bootstrap import Bootstrap
-from flask.ext.mail import Mail
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.login import LoginManager
-from config import config
-from config import Config
-from celery import Celery
+from flask import Flask, request
 import os
 import logging
 import time
 from functools import partial
-
-from sqlalchemy import event
-from sqlalchemy.engine import Engine
-from flask import Flask, request
 from flask_login import current_user
-
-from flaskbb._compat import string_types
-# views
-from flaskbb.user.views import user
-from flaskbb.message.views import message
-from flaskbb.auth.views import auth
-from flaskbb.management.views import management
-from flaskbb.forum.views import forum
-# models
-from flaskbb.user.models import User, Guest
-# extensions
-from flaskbb.extensions import (db, login_manager, mail, cache, redis_store,
-                                debugtoolbar, alembic, themes, plugin_manager,
-                                babel, csrf, allows, limiter, celery, whooshee)
-# various helpers
-from flaskbb.utils.helpers import (time_utcnow, format_date, time_since,
-                                   crop_title, is_online, mark_online,
-                                   forum_is_unread, topic_is_unread,
-                                   render_template, render_markup,
-                                   app_config_from_env)
-from flaskbb.utils.translations import FlaskBBDomain
-# permission checks (here they are used for the jinja filters)
-from flaskbb.utils.requirements import (IsAdmin, IsAtleastModerator,
-                                        CanBanUser, CanEditUser,
-                                        TplCanModerate, TplCanDeletePost,
-                                        TplCanDeleteTopic, TplCanEditPost,
-                                        TplCanPostTopic, TplCanPostReply)
-# whooshees
-from flaskbb.utils.search import (PostWhoosheer, TopicWhoosheer,
-                                  ForumWhoosheer, UserWhoosheer)
-# app specific configurations
-from flaskbb.utils.settings import flaskbb_config
-
-
-bootstrap = Bootstrap()
-mail = Mail()
-db = SQLAlchemy()
-celery = Celery(__name__, broker=Config.CELERY_BROKER_URL)
-
-login_manager = LoginManager()
-login_manager.session_protection = 'strong'
-login_manager.login_view = 'auth.login'
+from wxpy import get_wechat_logger
 
 
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config[config_name])
     config[config_name].init_app(app)
+    app.error_logger = get_wechat_logger()
 
     bootstrap.init_app(app)
     mail.init_app(app)
@@ -81,14 +30,7 @@ def create_app(config_name):
 
 
 def create_app(config=None):
-    """Creates the app.
-    :param config: The configuration file or object.
-                   The environment variable is weightet as the heaviest.
-                   For example, if the config is specified via an file
-                   and a ENVVAR, it will load the config via the file and
-                   later overwrite it from the ENVVAR.
-    """
-    app = Flask("flaskbb")
+    app = Flask("fanclley")
 
     configure_app(app, config)
     configure_celery_app(app, celery)
@@ -157,46 +99,15 @@ def configure_blueprints(app):
 def configure_extensions(app):
     """Configures the extensions."""
 
-    # Flask-WTF CSRF
-    csrf.init_app(app)
-
-    # Flask-Plugins
-    plugin_manager.init_app(app)
-
     # Flask-SQLAlchemy
     db.init_app(app)
-
-    # Flask-Alembic
-    alembic.init_app(app, command_name="db")
 
     # Flask-Mail
     mail.init_app(app)
 
-    # Flask-Cache
-    cache.init_app(app)
-
-    # Flask-Debugtoolbar
-    debugtoolbar.init_app(app)
-
-    # Flask-Themes
-    themes.init_themes(app, app_identifier="flaskbb")
-
-    # Flask-And-Redis
-    redis_store.init_app(app)
-
-    # Flask-Limiter
-    limiter.init_app(app)
-
-    # Flask-Whooshee
-    whooshee.init_app(app)
-    # not needed for unittests - and it will speed up testing A LOT
-    if not app.testing:
-        whooshee.register_whoosheer(PostWhoosheer)
-        whooshee.register_whoosheer(TopicWhoosheer)
-        whooshee.register_whoosheer(ForumWhoosheer)
-        whooshee.register_whoosheer(UserWhoosheer)
 
     # Flask-Login
+    login_manager.session_protection = 'strong'
     login_manager.login_view = app.config["LOGIN_VIEW"]
     login_manager.refresh_view = app.config["REAUTH_VIEW"]
     login_manager.login_message_category = app.config["LOGIN_MESSAGE_CATEGORY"]
@@ -216,90 +127,21 @@ def configure_extensions(app):
 
     login_manager.init_app(app)
 
-    # Flask-BabelEx
-    babel.init_app(app=app, default_domain=FlaskBBDomain(app))
-
-    @babel.localeselector
-    def get_locale():
-        # if a user is logged in, use the locale from the user settings
-        if current_user and \
-                current_user.is_authenticated and current_user.language:
-            return current_user.language
-        # otherwise we will just fallback to the default language
-        return flaskbb_config["DEFAULT_LANGUAGE"]
-
-    # Flask-Allows
-    allows.init_app(app)
-    allows.identity_loader(lambda: current_user)
-
-
-def configure_template_filters(app):
-    """Configures the template filters."""
-    filters = {}
-
-    filters['markup'] = render_markup
-    filters['format_date'] = format_date
-    filters['time_since'] = time_since
-    filters['is_online'] = is_online
-    filters['crop_title'] = crop_title
-    filters['forum_is_unread'] = forum_is_unread
-    filters['topic_is_unread'] = topic_is_unread
-
-    permissions = [
-        ('is_admin', IsAdmin),
-        ('is_moderator', IsAtleastModerator),
-        ('is_admin_or_moderator', IsAtleastModerator),
-        ('can_edit_user', CanEditUser),
-        ('can_ban_user', CanBanUser),
-    ]
-
-    filters.update([
-        (name, partial(perm, request=request)) for name, perm in permissions
-    ])
-
-    # these create closures
-    filters['can_moderate'] = TplCanModerate(request)
-    filters['post_reply'] = TplCanPostReply(request)
-    filters['edit_post'] = TplCanEditPost(request)
-    filters['delete_post'] = TplCanDeletePost(request)
-    filters['post_topic'] = TplCanPostTopic(request)
-    filters['delete_topic'] = TplCanDeleteTopic(request)
-
-    app.jinja_env.filters.update(filters)
-
 
 def configure_context_processors(app):
     """Configures the context processors."""
 
     @app.context_processor
     def inject_flaskbb_config():
-        """Injects the ``flaskbb_config`` config variable into the
-        templates.
-        """
-
-        return dict(flaskbb_config=flaskbb_config, format_date=format_date)
+        return dict(fanclley_config=fanclley_config, format_date=format_date)
 
 
 def configure_before_handlers(app):
     """Configures the before request handlers."""
 
     @app.before_request
-    def update_lastseen():
-        """Updates `lastseen` before every reguest if the user is
-        authenticated."""
-
-        if current_user.is_authenticated:
-            current_user.lastseen = time_utcnow()
-            db.session.add(current_user)
-            db.session.commit()
-
-    if app.config["REDIS_ENABLED"]:
-        @app.before_request
-        def mark_current_user_online():
-            if current_user.is_authenticated:
-                mark_online(current_user.username)
-            else:
-                mark_online(request.remote_addr, guest=True)
+    def before_request():
+        pass
 
 
 def configure_errorhandlers(app):
@@ -307,15 +149,15 @@ def configure_errorhandlers(app):
 
     @app.errorhandler(403)
     def forbidden_page(error):
-        return render_template("errors/forbidden_page.html"), 403
+        return render_template("403.html"), 403
 
     @app.errorhandler(404)
     def page_not_found(error):
-        return render_template("errors/page_not_found.html"), 404
+        return render_template("404.html"), 404
 
     @app.errorhandler(500)
     def server_error_page(error):
-        return render_template("errors/server_error.html"), 500
+        return render_template("500.html"), 500
 
 
 def configure_logging(app):

@@ -98,14 +98,6 @@ class User(UserMixin, db.Model):
     def __repr__(self):
         return '<User %r>' % self.username
 
-class Message(db.Model):
-    __tablename__ = 'messages'
-    id = db.Column(db.Integer,primary_key=True)
-    user_name = db.Column(db.Unicode)
-    message = db.Column(db.Text)
-    time = db.Column(db.String,default = datetime.utcnow)
-    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
-
 
 @login_manager.user_loader
 def load_user(user_id):
