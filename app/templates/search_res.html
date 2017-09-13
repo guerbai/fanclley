@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Fanclley - Search{% endblock %}
+
+{% block page_content %}
+    <div class="container">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td class="col-md-2"> 来源 </td>
+                    <td class="col-md-4"> 书名 </td>
+                    <td class="col-md-2"> 免费章节 </td>
+                </tr>
+            </thead>
+            <tbody>
+                {% for abook in result %}
+                <tr>
+                    <td class="col-md-2"> {{ abook.origin }} </td>
+                    <td class="col-md-4"> <a href="{{ abook.raw_url }}"> {{ abook.bookname }} </a></td>
+                    {% if current_user.is_authenticated %}
+                    <td class="col-md-2"> <a href="{{ url_for('main.downloadfree',origin=abook.origin,bookid=abook.bookid,bookname=abook.bookname,raw_url=abook.raw_url) }}">发送 </a></td>
+                    {% else %}
+                    <td class="col-md-2">发送</td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}
