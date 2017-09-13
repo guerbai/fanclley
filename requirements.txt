@@ -1,15 +1,14 @@
 flask
 flask-bootstrap
 flask-login
-flask-mail
 flask-migrate
 flask-sqlalchemy
 flask-script
 flask-wtf
 itsdangerous
 celery
+redis
 requests
 bs4
-redis
-ConcurrentLogHandler
 wxpy
+ConcurrentLogHandler
