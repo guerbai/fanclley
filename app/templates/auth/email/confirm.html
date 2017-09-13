@@ -1,8 +1,0 @@
-<p>你好： {{ user.username }},</p>
-<p>欢迎使用<b>Fanclley</b>推送服务！</p>
-<p>点击如下链接来确认你的帐户: <a href="{{ url_for('auth.confirm', token=token, _external=True) }}">click here</a>.</p>
-<p>此外，你可以复制如下链接到你的浏览器打开:</p>
-<p>{{ url_for('auth.confirm', token=token, _external=True) }}</p>
-<p>Sincerely,</p>
-<p>Fanclley</p>
-<p><small>注意: 回复此邮件将不予以处理。</small></p>
