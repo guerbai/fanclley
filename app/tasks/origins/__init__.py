@@ -1,6 +1,11 @@
-from basebook import Basebook
-from hongxiufree import HongxiuFree
-from qidianfree import QidianFree
-from seventeenfree import Seventeenfree
-from zonghengfree import Zonghengfree
-from search import Search
+# -*- coding: utf-8 -*-
+from qidian import QidianFree
+
+origin_table = {
+	'qidian': QidianFree,
+	# 'hongxiu': HongxiuFree,
+	# '17k': SeventeenkFree,
+	# 'zongheng': ZonghengFree,
+}
+
+__all__ = ['Book']

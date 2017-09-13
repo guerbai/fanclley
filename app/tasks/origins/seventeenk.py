@@ -9,7 +9,7 @@ reload(sys)
 sys.setdefaultencoding("utf-8")
 
 #17k小说站。
-class Seventeenfree:
+class Seventeenkfree:
 
     s = requests.session()
     s.headers['User-Agent'] = random.choice(USER_AGENTS)
