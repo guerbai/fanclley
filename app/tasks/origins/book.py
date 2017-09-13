@@ -30,7 +30,7 @@ class Book(object):
 
     def generate_txt(self):
         self.get_content()
-        with open('test.txt', 'w') as f:
+        with open(self.bookname+'.txt', 'w') as f:
             for k in self.content:
                 f.write(k)
                 f.write('\n')
@@ -39,5 +39,6 @@ class Book(object):
         print ('ok ya!')
 
 if __name__ == '__main__':
-    book = Book('qidian', '1009838140')
+    # book = Book('qidian', '1009838140')
+    book = Book('17k', '2498066')
     book.generate_txt()

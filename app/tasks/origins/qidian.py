@@ -1,10 +1,6 @@
 # -*- coding:utf-8 -*-
-import requests,json
-# from ..loggers import orilogger
-from _proxy import USER_AGENTS, PROXIES
-# from _origin import Origin
-import random
-import re
+import json
+import requests
 
 #起点中文网。
 class QidianFree(object):
@@ -53,13 +49,3 @@ class QidianFree(object):
         json_content = json.loads(content)
         novel_text = json_content['Data']
         return novel_text
-
-
-
-if __name__ == '__main__':
-    qidian_one = QidianFree('1009838140')
-    qidian_one.get_info()
-    content = qidian_one.construct_text()
-    # print (content)
-    qidian_one.book.generate_txt()
-    print ('ok done')
